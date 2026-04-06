@@ -1,0 +1,51 @@
+.trust-bar {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.trust-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.trust-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  opacity: 0.7;
+}
+
+.trust-brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  filter: grayscale(100%);
+  transition: var(--transition);
+  cursor: default;
+}
+
+.trust-brand span {
+  letter-spacing: -0.02em;
+}
+
+.trust-brand:hover {
+  filter: grayscale(0%);
+  color: var(--primary);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .trust-grid {
+    justify-content: center;
+    gap: 3rem;
+  }
+}
