@@ -21,7 +21,6 @@ export default function Navbar() {
           <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/services" className={location.pathname.startsWith('/services') ? 'active' : ''} onClick={() => setIsOpen(false)}>Services</Link>
           <Link to="/case-studies" className={location.pathname.startsWith('/case-studies') ? 'active' : ''} onClick={() => setIsOpen(false)}>Case Studies</Link>
-          <Link to="/#process" onClick={() => setIsOpen(false)}>Our Systems</Link>
           <div className="navbar-cta-mobile">
             <Link to="/free-audit" className="btn btn-primary" onClick={() => setIsOpen(false)}>Get Free Growth System Audit</Link>
           </div>
