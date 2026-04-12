@@ -1,28 +1,27 @@
-import { CloudIcon, CpuIcon, DatabaseIcon, LayersIcon, ZapIcon } from 'lucide-react';
 import './TrustBar.css';
 
-export default function TrustBar() {
-  const logos = [
-    { name: 'TechFlow', icon: <LayersIcon size={24} /> },
-    { name: 'Innovate AI', icon: <CpuIcon size={24} /> },
-    { name: 'DataScale', icon: <DatabaseIcon size={24} /> },
-    { name: 'CloudSync', icon: <CloudIcon size={24} /> },
-    { name: 'NexGen B2B', icon: <ZapIcon size={24} /> },
-  ];
+const stats = [
+  { num: '+7,700%', label: 'Traffic growth' },
+  { num: '94/100',  label: 'Site health achieved' },
+  { num: '5+',      label: 'Industries served' },
+  { num: '30 days', label: 'Average time to go live' },
+];
 
+export default function TrustBar() {
   return (
-    <div className="trust-bar section-gray">
+    <div className="trust-bar">
       <div className="container">
-        <p className="trust-label text-center">TRUSTED BY INDUSTRY-LEADING ENTERPRISES</p>
-        <div className="trust-grid">
-          {logos.map((logo, index) => (
-             <div key={index} className="trust-brand">
-               {logo.icon}
-               <span>{logo.name}</span>
-             </div>
+        <p className="trust-label text-center">REAL RESULTS FROM REAL BUSINESSES</p>
+        <div className="trust-stats-grid">
+          {stats.map((s, i) => (
+            <div key={i} className="trust-stat-item">
+              <div className="trust-stat-num">{s.num}</div>
+              <div className="trust-stat-label">{s.label}</div>
+            </div>
           ))}
         </div>
       </div>
     </div>
   );
 }
+

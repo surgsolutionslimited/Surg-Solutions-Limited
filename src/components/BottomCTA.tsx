@@ -1,5 +1,4 @@
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
 import './BottomCTA.css';
 
 export default function BottomCTA() {
@@ -7,15 +6,21 @@ export default function BottomCTA() {
     <section className="bottom-cta section-dark">
       <div className="container bottom-cta-container">
         <div className="bottom-cta-content text-center animate-fade-in">
-          <h2>Ready to Scale Automatically?</h2>
-          <p>Partner with the company that builds your infrastructure to drive measurable ROI and eliminate operational chaos.</p>
+          <h2>Ready to Build Your Growth System?</h2>
+          <p>Let's talk about what you need. No pressure, no pitch — just a conversation about your business and how to grow it.</p>
           <div className="bottom-cta-actions">
-            <Link to="/free-audit" className="btn btn-primary">
-              Get Your Free Growth System Audit <ArrowRight size={20} />
-            </Link>
+            <a
+              href="https://wa.link/a2gatg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              <MessageCircle size={20} /> Get in Touch on WhatsApp
+            </a>
           </div>
         </div>
       </div>
     </section>
   );
 }
+

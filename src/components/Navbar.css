@@ -57,6 +57,12 @@
   display: none;
 }
 
+.navbar-cta-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  gap: 0.4rem;
+}
+
 .navbar-toggle {
   display: none;
   background: none;

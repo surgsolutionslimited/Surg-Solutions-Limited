@@ -1,13 +1,13 @@
-import { SearchIcon, LightbulbIcon, ArrowUpRightIcon, BarChart3Icon } from 'lucide-react';
+import { SearchIcon, LightbulbIcon, RocketIcon, BarChart3Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Methodology.css';
 
 export default function Methodology() {
   const steps = [
-    { num: '01', title: 'Deep Audit', desc: 'Identify operational bottlenecks and growth gaps in your current setup.', icon: <SearchIcon size={24}/> },
-    { num: '02', title: 'System Blueprint', desc: 'Data-driven roadmap for your complete growth and automation infrastructure.', icon: <LightbulbIcon size={24}/> },
-    { num: '03', title: 'Buildout', desc: 'Precision implementation of your website, CRM, and automated workflows.', icon: <ArrowUpRightIcon size={24}/> },
-    { num: '04', title: 'Automation & Scale', desc: 'Continuous optimization and traffic scaling for predictable revenue.', icon: <BarChart3Icon size={24}/> },
+    { num: '01', title: 'Discovery & Audit', desc: 'We map your current situation, identify growth gaps, and define the system to build.', icon: <SearchIcon size={24}/> },
+    { num: '02', title: 'System Blueprint', desc: 'A clear plan covering your website, search presence, ad strategy, and automations.', icon: <LightbulbIcon size={24}/> },
+    { num: '03', title: 'Build & Launch', desc: 'We build everything — website, campaigns, integrations — and go live together.', icon: <RocketIcon size={24}/> },
+    { num: '04', title: 'Optimise & Scale', desc: 'Ongoing performance monitoring, reporting, and scaling what works for predictable growth.', icon: <BarChart3Icon size={24}/> },
   ];
 
   return (

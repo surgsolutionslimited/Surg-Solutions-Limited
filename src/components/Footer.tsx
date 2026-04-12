@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
 import logoLight from '../assets/logo-light.png';
 import './Footer.css';
 
@@ -8,38 +9,44 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-             <Link to="/">
-               <img src={logoLight} alt="Surg Solutions" className="footer-logo" />
-             </Link>
-             <p>We build automated growth systems that generate leads, eliminate repetitive work, and make it easier to run and scale your business.</p>
+            <Link to="/">
+              <img src={logoLight} alt="Surg Solutions" className="footer-logo" />
+            </Link>
+            <p>We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably.</p>
           </div>
-          
+
           <div className="footer-links">
             <h3>Services</h3>
             <ul>
-              <li><Link to="/services">Growth Engine</Link></li>
-              <li><Link to="/services">Automation & Ops</Link></li>
-              <li><Link to="/services">Data Systems</Link></li>
-              <li><Link to="/services">Scalable Growth</Link></li>
+              <li><Link to="/services">Website Design</Link></li>
+              <li><Link to="/services">SEO &amp; AIO</Link></li>
+              <li><Link to="/services">Google &amp; Meta Ads</Link></li>
+              <li><Link to="/services">Growth Automation</Link></li>
             </ul>
           </div>
 
           <div className="footer-links">
             <h3>Company</h3>
             <ul>
-              <li><Link to="/">About Us</Link></li>
+              <li><Link to="/about">About</Link></li>
               <li><Link to="/case-studies">Case Studies</Link></li>
-              <li><Link to="/#process">Our Systems</Link></li>
-              <li><Link to="/">Contact</Link></li>
+              <li><Link to="/services">Services</Link></li>
             </ul>
           </div>
 
           <div className="footer-form">
-            <h3>Get Your Free Growth Audit</h3>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your work email" required aria-label="Work Email" />
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            <h3>Ready to grow?</h3>
+            <p className="footer-wa-desc">
+              The fastest way to start is a direct message. No forms, no funnels.
+            </p>
+            <a
+              href="https://wa.link/a2gatg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary footer-wa-btn"
+            >
+              <MessageCircle size={16} /> Message on WhatsApp
+            </a>
           </div>
         </div>
 

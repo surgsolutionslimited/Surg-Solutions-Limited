@@ -1,0 +1,399 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.wrap { padding: 1.5rem 0; font-family: var(--font-sans); max-width: 720px; }
+.page-block { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 2rem; overflow: hidden; }
+.page-header { background: var(--color-background-secondary); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.page-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.page-url { font-size: 11px; color: var(--color-text-secondary); }
+.wf { padding: 0; }
+
+.section { border-bottom: 0.5px solid var(--color-border-tertiary); padding: 14px 16px; }
+.section:last-child { border-bottom: none; }
+.section-tag { font-size: 10px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.section-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border-secondary); flex-shrink: 0; }
+.section-tag .dot-teal { background: #1D9E75; }
+.section-tag .dot-purple { background: #534AB7; }
+.section-tag .dot-amber { background: #BA7517; }
+.section-tag .dot-coral { background: #D85A30; }
+
+.wf-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+.wf-row:last-child { margin-bottom: 0; }
+
+.wf-block { border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--color-text-secondary); text-align: center; padding: 6px 8px; line-height: 1.3; flex-shrink: 0; border: 0.5px dashed var(--color-border-secondary); }
+.wf-h1 { background: #EEEDFE; color: #3C3489; border: none; font-size: 13px; font-weight: 500; padding: 12px 14px; border-radius: 4px; width: 100%; line-height: 1.4; text-align: left; }
+.wf-sub { background: var(--color-background-secondary); color: var(--color-text-secondary); font-size: 12px; padding: 8px 12px; border-radius: 4px; width: 100%; line-height: 1.5; text-align: left; border: none; }
+.wf-cta-primary { background: #1D9E75; color: #E1F5EE; font-size: 12px; font-weight: 500; padding: 8px 16px; border-radius: 4px; border: none; }
+.wf-cta-secondary { background: var(--color-background-secondary); color: var(--color-text-secondary); font-size: 12px; padding: 8px 14px; border-radius: 4px; border: 0.5px solid var(--color-border-secondary); }
+.wf-card { background: var(--color-background-secondary); border-radius: 6px; padding: 10px; flex: 1; min-width: 0; }
+.wf-card-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.wf-card-sub { font-size: 11px; color: var(--color-text-secondary); line-height: 1.4; }
+.wf-img { background: var(--color-background-secondary); border-radius: 4px; border: 0.5px dashed var(--color-border-secondary); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--color-text-secondary); }
+.wf-nav { background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
+.wf-logo { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.wf-nav-links { display: flex; gap: 16px; }
+.wf-nav-link { font-size: 12px; color: var(--color-text-secondary); }
+.wf-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+.wf-step-num { width: 22px; height: 22px; border-radius: 50%; background: #EEEDFE; color: #3C3489; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; }
+.wf-step-body { flex: 1; }
+.wf-step-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.wf-step-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.4; }
+.wf-stat { background: var(--color-background-secondary); border-radius: 4px; padding: 8px 10px; flex: 1; text-align: center; }
+.wf-stat-num { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+.wf-stat-label { font-size: 10px; color: var(--color-text-secondary); margin-top: 2px; }
+.wf-tag { display: inline-block; background: #E1F5EE; color: #0F6E56; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; }
+.wf-divider { border: none; border-top: 0.5px dashed var(--color-border-tertiary); margin: 8px 0; }
+.wf-avatar { width: 60px; height: 60px; border-radius: 50%; background: #EEEDFE; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #3C3489; flex-shrink: 0; }
+.wf-quote { background: var(--color-background-secondary); border-left: 3px solid #1D9E75; padding: 8px 12px; border-radius: 0 4px 4px 0; font-size: 11px; color: var(--color-text-secondary); font-style: italic; line-height: 1.5; }
+.wf-cs-card { background: var(--color-background-secondary); border-radius: 6px; padding: 10px; flex: 1; min-width: 0; cursor: pointer; border: 0.5px solid var(--color-border-tertiary); }
+.wf-cs-card:hover { border-color: var(--color-border-secondary); }
+.wf-cs-industry { font-size: 10px; color: #0F6E56; font-weight: 500; margin-bottom: 4px; }
+.wf-cs-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; line-height: 1.3; }
+.wf-cs-stat { font-size: 13px; font-weight: 500; color: #3C3489; }
+.wf-cs-stat-label { font-size: 10px; color: var(--color-text-secondary); }
+.wf-modal-bg { background: rgba(0,0,0,0.08); border-radius: 6px; padding: 10px; margin-top: 8px; }
+.wf-modal { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: 12px; }
+.wf-modal-close { float: right; font-size: 10px; color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 4px; padding: 2px 6px; }
+.note { font-size: 11px; color: var(--color-text-secondary); background: #FAEEDA; border-radius: 4px; padding: 6px 10px; margin-top: 8px; line-height: 1.5; }
+.note strong { font-weight: 500; color: #854F0B; }
+.copy-block { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-top: 6px; }
+.copy-label { font-size: 10px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.copy-text { font-size: 12px; color: var(--color-text-primary); line-height: 1.6; font-style: italic; }
+</style>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════ HOMEPAGE ═══════════════════════════════ -->
+<div class="page-block">
+  <div class="page-header">
+    <span class="page-title">Homepage</span>
+    <span class="page-url">surgsolutions.online/</span>
+  </div>
+  <div class="wf">
+
+    <div class="section" style="padding:0;">
+      <div class="wf-nav">
+        <span class="wf-logo">SURG</span>
+        <div class="wf-nav-links">
+          <span class="wf-nav-link">Home</span>
+          <span class="wf-nav-link">Services</span>
+          <span class="wf-nav-link">Case Studies</span>
+          <span class="wf-nav-link">About</span>
+        </div>
+        <div class="wf-cta-primary" style="font-size:11px; padding:6px 12px;">Get in Touch</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>Hero section</div>
+      <div class="wf-tag">Growth Systems & Automation</div>
+      <div class="wf-h1">Stop Chasing Clients.<br>Build the System That Brings Them to You.</div>
+      <div class="wf-sub" style="margin-top:6px;">We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably, without the manual hustle.</div>
+      <div class="wf-row" style="margin-top:10px;">
+        <div class="wf-cta-primary">Get in Touch →</div>
+        <div class="wf-cta-secondary">See Our Work</div>
+      </div>
+      <div class="note" style="margin-top:10px;"><strong>Copy note:</strong> No location. No pricing. Global-facing. Speaks to the pain (chasing clients) and the promise (a system). Works for any geography.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>Social proof bar — logos or stats</div>
+      <div class="wf-row">
+        <div class="wf-stat"><div class="wf-stat-num">+7,700%</div><div class="wf-stat-label">Traffic growth</div></div>
+        <div class="wf-stat"><div class="wf-stat-num">94/100</div><div class="wf-stat-label">Site health achieved</div></div>
+        <div class="wf-stat"><div class="wf-stat-num">5+</div><div class="wf-stat-label">Industries served</div></div>
+        <div class="wf-stat"><div class="wf-stat-num">30 days</div><div class="wf-stat-label">To go live</div></div>
+      </div>
+      <div class="note"><strong>Replace fake logos with real stats from the case studies.</strong> Numbers are more credible than unnamed company logos.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>The problem we solve</div>
+      <div class="wf-sub" style="margin-bottom:8px;">Short punchy section — 2–3 lines naming the pain before the solution. Works globally.</div>
+      <div class="wf-quote">"Most businesses have great products or services — but no system to attract clients consistently. They rely on referrals, word of mouth, and manual outreach. It works, until it doesn't."</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>What we build — 4 service pillars (keep current structure, rename)</div>
+      <div class="wf-row">
+        <div class="wf-card"><div class="wf-card-title">Online Presence</div><div class="wf-card-sub">Website + Google visibility built to convert visitors into enquiries</div></div>
+        <div class="wf-card"><div class="wf-card-title">Search Growth</div><div class="wf-card-sub">SEO + AIO so you appear when clients search for your service</div></div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-card"><div class="wf-card-title">Paid Acquisition</div><div class="wf-card-sub">Google and Meta ad campaigns that bring in qualified leads</div></div>
+        <div class="wf-card"><div class="wf-card-title">Automation</div><div class="wf-card-sub">Lead alerts, review systems, and reporting — running without you</div></div>
+      </div>
+      <div class="note"><strong>Each card links to the Services page.</strong> No prices here. "Learn more →" links.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-amber"></div>How it works — 4-step methodology (keep, rename)</div>
+      <div class="wf-step"><div class="wf-step-num">1</div><div class="wf-step-body"><div class="wf-step-title">Discovery & Audit</div><div class="wf-step-desc">We map your current situation, identify growth gaps, and define the system to build</div></div></div>
+      <div class="wf-step"><div class="wf-step-num">2</div><div class="wf-step-body"><div class="wf-step-title">System Blueprint</div><div class="wf-step-desc">A clear plan covering your website, search presence, ad strategy, and automations</div></div></div>
+      <div class="wf-step"><div class="wf-step-num">3</div><div class="wf-step-body"><div class="wf-step-title">Build & Launch</div><div class="wf-step-desc">We build everything — website, campaigns, integrations — and go live</div></div></div>
+      <div class="wf-step"><div class="wf-step-num">4</div><div class="wf-step-body"><div class="wf-step-title">Optimise & Scale</div><div class="wf-step-desc">Ongoing performance monitoring, reporting, and scaling what works</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-coral"></div>Case study preview — 2 cards, links to Case Studies page</div>
+      <div class="wf-row">
+        <div class="wf-cs-card"><div class="wf-cs-industry">Auto repair</div><div class="wf-cs-title">From 8 to 624 Google visitors in 6 months</div><div class="wf-cs-stat">+7,700%</div><div class="wf-cs-stat-label">Traffic growth</div></div>
+        <div class="wf-cs-card"><div class="wf-cs-industry">Trades business</div><div class="wf-cs-title">94/100 site health, zero errors, +18 positions</div><div class="wf-cs-stat">94/100</div><div class="wf-cs-stat-label">Site health score</div></div>
+      </div>
+      <div style="margin-top:8px;"><span class="wf-cta-secondary" style="font-size:11px;">View all case studies →</span></div>
+    </div>
+
+    <div class="section" style="background: var(--color-background-secondary);">
+      <div class="section-tag"><div class="dot dot-teal"></div>Final CTA section (dark background on real site)</div>
+      <div class="wf-h1" style="background:transparent; color: var(--color-text-primary); font-size:16px;">Ready to Build Your Growth System?</div>
+      <div class="wf-sub" style="background:transparent; margin:6px 0 10px;">Let's talk about what you need. No pressure, no pitch — just a conversation about your business.</div>
+      <div class="wf-cta-primary">Get in Touch on WhatsApp →</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SERVICES PAGE ═══════════════════════════════ -->
+<div class="page-block">
+  <div class="page-header">
+    <span class="page-title">Services page</span>
+    <span class="page-url">surgsolutions.online/services</span>
+  </div>
+  <div class="wf">
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>Page hero</div>
+      <div class="wf-h1">Everything Your Business Needs to Grow Online — In One Place.</div>
+      <div class="wf-sub" style="margin-top:6px;">We don't sell individual services. We build complete growth systems. Here's what each component does and why it matters.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>Service 1 — Website Development</div>
+      <div class="wf-row">
+        <div style="flex:1;">
+          <div class="wf-card-title" style="font-size:14px; margin-bottom:4px;">Website Design & Development</div>
+          <div class="wf-card-sub" style="font-size:12px; margin-bottom:8px;">Your website is the foundation of every other system. We build fast, mobile-first, conversion-focused websites that work as a 24/7 sales tool — not just a digital brochure.</div>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">
+            <span class="wf-tag">5-page standard</span>
+            <span class="wf-tag">WhatsApp integration</span>
+            <span class="wf-tag">Contact forms</span>
+            <span class="wf-tag">On-page SEO</span>
+            <span class="wf-tag">Mobile-first</span>
+          </div>
+        </div>
+        <div class="wf-img" style="width:100px; height:80px; flex-shrink:0;">Website preview</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>Service 2 — SEO & AIO</div>
+      <div class="wf-row">
+        <div style="flex:1;">
+          <div class="wf-card-title" style="font-size:14px; margin-bottom:4px;">SEO & Answer Engine Optimisation</div>
+          <div class="wf-card-sub" style="font-size:12px; margin-bottom:8px;">We optimise your site to appear on Google and in AI-powered search tools like ChatGPT and Perplexity. When someone searches for your service, you show up.</div>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">
+            <span class="wf-tag">Technical SEO</span>
+            <span class="wf-tag">Local SEO</span>
+            <span class="wf-tag">AIO / AI search</span>
+            <span class="wf-tag">Google Business Profile</span>
+            <span class="wf-tag">Keyword targeting</span>
+          </div>
+        </div>
+        <div class="wf-img" style="width:100px; height:80px; flex-shrink:0;">SEO graphic</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-amber"></div>Service 3 — Paid Ads</div>
+      <div class="wf-row">
+        <div style="flex:1;">
+          <div class="wf-card-title" style="font-size:14px; margin-bottom:4px;">Google Ads & Meta Ads</div>
+          <div class="wf-card-sub" style="font-size:12px; margin-bottom:8px;">We set up and manage targeted ad campaigns that put your business in front of the right people at the right time — people actively looking for what you offer.</div>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">
+            <span class="wf-tag">Google Search Ads</span>
+            <span class="wf-tag">Facebook Ads</span>
+            <span class="wf-tag">Instagram Ads</span>
+            <span class="wf-tag">Campaign setup</span>
+            <span class="wf-tag">Monthly management</span>
+          </div>
+        </div>
+        <div class="wf-img" style="width:100px; height:80px; flex-shrink:0;">Ads graphic</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-coral"></div>Service 4 — Automation</div>
+      <div class="wf-row">
+        <div style="flex:1;">
+          <div class="wf-card-title" style="font-size:14px; margin-bottom:4px;">Growth Automation</div>
+          <div class="wf-card-sub" style="font-size:12px; margin-bottom:8px;">We build the automated systems that keep your business running smoothly — lead notifications, review requests, monthly performance reports, and more.</div>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">
+            <span class="wf-tag">Lead notifications</span>
+            <span class="wf-tag">Review requests</span>
+            <span class="wf-tag">Review reply system</span>
+            <span class="wf-tag">Monthly reports</span>
+          </div>
+        </div>
+        <div class="wf-img" style="width:100px; height:80px; flex-shrink:0;">Automation graphic</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>The Business Growth System — bundled offer callout</div>
+      <div class="wf-card" style="border: 1.5px solid #1D9E75;">
+        <div class="wf-card-title" style="font-size:14px; color:#0F6E56; margin-bottom:4px;">The Business Growth System</div>
+        <div class="wf-card-sub" style="margin-bottom:8px;">All four components, built together as one integrated system. This is how we get the best results — not individual services stitched together, but a complete system designed to work as one.</div>
+        <div class="wf-cta-primary" style="display:inline-block; font-size:11px; padding:6px 14px;">Get in Touch →</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ABOUT PAGE ═══════════════════════════════ -->
+<div class="page-block">
+  <div class="page-header">
+    <span class="page-title">About page</span>
+    <span class="page-url">surgsolutions.online/about</span>
+  </div>
+  <div class="wf">
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>Founder intro — above the fold</div>
+      <div class="wf-row" style="align-items:center;">
+        <div class="wf-avatar">CU</div>
+        <div style="flex:1;">
+          <div class="wf-card-title" style="font-size:15px; margin-bottom:3px;">Chuks — Founder, Surg Solutions</div>
+          <div class="wf-card-sub">Digital growth strategist. I help businesses build systems that attract and convert clients — without the manual hustle.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>Founder story — narrative section</div>
+      <div class="wf-sub">Short, honest founder story. 3–4 paragraphs. Cover: what you saw in the market (businesses working hard but invisible online), what you built Surg Solutions to do, how you work, and who you work best with.</div>
+      <div class="wf-divider"></div>
+      <div class="note"><strong>Key message:</strong> "I don't sell services. I build systems." — Position yourself as a strategist who executes, not just an agency.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-amber"></div>Skills & credentials</div>
+      <div class="wf-row">
+        <div class="wf-card"><div class="wf-card-title">SEO & AIO</div><div class="wf-card-sub">Search engine and AI answer engine optimisation</div></div>
+        <div class="wf-card"><div class="wf-card-title">Google Ads</div><div class="wf-card-sub">Search and display campaign strategy and management</div></div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-card"><div class="wf-card-title">Meta Ads</div><div class="wf-card-sub">Facebook and Instagram paid campaigns</div></div>
+        <div class="wf-card"><div class="wf-card-title">Web Development</div><div class="wf-card-sub">Fast, conversion-focused websites via vibe coding</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-coral"></div>How I work — the process</div>
+      <div class="wf-sub" style="margin-bottom:8px;">Short section explaining your working style — discovery call, custom strategy, hands-on execution, ongoing communication. Sets expectations before the sales call.</div>
+      <div class="wf-step"><div class="wf-step-num">1</div><div class="wf-step-body"><div class="wf-step-title">Discovery call</div><div class="wf-step-desc">We talk through your business, goals, and current situation</div></div></div>
+      <div class="wf-step"><div class="wf-step-num">2</div><div class="wf-step-body"><div class="wf-step-title">Custom proposal</div><div class="wf-step-desc">I build a tailored system recommendation for your specific business</div></div></div>
+      <div class="wf-step"><div class="wf-step-num">3</div><div class="wf-step-body"><div class="wf-step-title">Build & deliver</div><div class="wf-step-desc">I handle everything — you stay focused on running your business</div></div></div>
+    </div>
+
+    <div class="section" style="background: var(--color-background-secondary);">
+      <div class="section-tag"><div class="dot dot-teal"></div>CTA</div>
+      <div class="wf-card-title" style="font-size:14px; margin-bottom:4px;">Want to work together?</div>
+      <div class="wf-card-sub" style="margin-bottom:10px;">The best way to start is a quick conversation. No forms, no funnels — just a direct message.</div>
+      <div class="wf-cta-primary" style="display:inline-block; font-size:11px; padding:7px 14px;">Message me on WhatsApp →</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ CASE STUDIES PAGE ═══════════════════════════════ -->
+<div class="page-block">
+  <div class="page-header">
+    <span class="page-title">Case Studies page</span>
+    <span class="page-url">surgsolutions.online/case-studies</span>
+  </div>
+  <div class="wf">
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-purple"></div>Page hero</div>
+      <div class="wf-h1">Real Results. Real Businesses.</div>
+      <div class="wf-sub" style="margin-top:6px;">Every case study below is a real growth story — with real numbers. No vanity metrics, no vague claims.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-teal"></div>Case study card grid — 3 columns, click to expand</div>
+      <div class="wf-row">
+        <div class="wf-cs-card">
+          <div class="wf-cs-industry">Auto repair</div>
+          <div class="wf-cs-title">From 8 to 624 Google visitors in 6 months</div>
+          <div class="wf-divider"></div>
+          <div class="wf-cs-stat">+7,700%</div>
+          <div class="wf-cs-stat-label">Organic traffic</div>
+        </div>
+        <div class="wf-cs-card">
+          <div class="wf-cs-industry">Health clinic</div>
+          <div class="wf-cs-title">Page 2 to page 1 in 3 months</div>
+          <div class="wf-divider"></div>
+          <div class="wf-cs-stat">+17%</div>
+          <div class="wf-cs-stat-label">Traffic growth</div>
+        </div>
+        <div class="wf-cs-card">
+          <div class="wf-cs-industry">Electrical trades</div>
+          <div class="wf-cs-title">94/100 site health, zero errors</div>
+          <div class="wf-divider"></div>
+          <div class="wf-cs-stat">+18 pos</div>
+          <div class="wf-cs-stat-label">Google ranking</div>
+        </div>
+      </div>
+      <div class="wf-row" style="margin-top:8px;">
+        <div class="wf-cs-card">
+          <div class="wf-cs-industry">Product / retail</div>
+          <div class="wf-cs-title">Page 2 to page 1, 3,490 clicks per 6 months</div>
+          <div class="wf-divider"></div>
+          <div class="wf-cs-stat">91/100</div>
+          <div class="wf-cs-stat-label">Site health score</div>
+        </div>
+        <div class="wf-cs-card">
+          <div class="wf-cs-industry">Multi-location fitness</div>
+          <div class="wf-cs-title">Page 3 to page 1 — biggest position jump</div>
+          <div class="wf-divider"></div>
+          <div class="wf-cs-stat">32 → 13</div>
+          <div class="wf-cs-stat-label">Google position</div>
+        </div>
+        <div class="wf-cs-card" style="background: var(--color-background-primary); border: 0.5px dashed var(--color-border-secondary); display:flex; align-items:center; justify-content:center; min-height:80px;">
+          <div style="text-align:center;"><div style="font-size:12px; color: var(--color-text-secondary);">More coming soon</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag"><div class="dot dot-amber"></div>Case study modal — appears when a card is clicked</div>
+      <div class="wf-modal-bg">
+        <div class="wf-modal">
+          <div class="wf-modal-close">✕ Close</div>
+          <div class="wf-tag">Auto repair · SEO</div>
+          <div class="wf-card-title" style="font-size:15px; margin: 6px 0 4px;">From 8 to 624 Google Visitors — In 6 Months</div>
+          <div class="wf-divider"></div>
+          <div class="wf-row">
+            <div class="wf-stat"><div class="wf-stat-num">+7,700%</div><div class="wf-stat-label">Traffic</div></div>
+            <div class="wf-stat"><div class="wf-stat-num">82/100</div><div class="wf-stat-label">Site health</div></div>
+            <div class="wf-stat"><div class="wf-stat-num">6 mo</div><div class="wf-stat-label">Timeline</div></div>
+          </div>
+          <div class="wf-divider"></div>
+          <div class="wf-step-title" style="margin-bottom:3px;">The problem</div>
+          <div class="wf-card-sub" style="margin-bottom:8px;">Only 8 visitors from Google in 6 months. Invisible online despite years in business.</div>
+          <div class="wf-step-title" style="margin-bottom:3px;">What we did</div>
+          <div class="wf-card-sub" style="margin-bottom:8px;">Technical SEO, local keyword targeting, content optimisation, site health improvements.</div>
+          <div class="wf-step-title" style="margin-bottom:3px;">The result</div>
+          <div class="wf-card-sub" style="margin-bottom:8px;">624 monthly visitors from Google. Multiple page 1 rankings. Leads coming through daily.</div>
+          <div class="wf-quote">"Amazing work! Still very happy and getting quite a lot of leads coming through." — Ryan W., MD</div>
+          <div style="margin-top:10px;"><div class="wf-cta-primary" style="display:inline-block; font-size:11px; padding:6px 14px;">Get in Touch →</div></div>
+        </div>
+      </div>
+      <div class="note"><strong>Modal behaviour:</strong> Each card click opens this modal, populated with that case study's data. Same template, different content. CTA in every modal links to WhatsApp.</div>
+    </div>
+
+  </div>
+</div>
+
+</div>

@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
@@ -10,18 +10,23 @@ export default function Hero() {
         <div className="hero-content text-center animate-fade-in">
           <div className="hero-badge">Growth Systems & Automation</div>
           <h1>
-            We Build Growth Systems<br />
-            <span className="text-gradient">That Scale Your Business.</span>
+            Stop Chasing Clients.<br />
+            <span className="text-gradient">Build the System That Brings Them to You.</span>
           </h1>
           <p>
-            Websites, automation, and growth infrastructure designed to generate leads, remove manual work, and help you run your business with ease.
+            We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably, without the manual hustle.
           </p>
           <div className="hero-actions">
-            <Link to="/free-audit" className="btn btn-primary">
-              Get Free Growth System Audit <ArrowRight size={20} />
-            </Link>
+            <a
+              href="https://wa.link/a2gatg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              <MessageCircle size={20} /> Get in Touch
+            </a>
             <Link to="/case-studies" className="btn btn-outline">
-              View Case Studies
+              See Our Work <ArrowRight size={18} />
             </Link>
           </div>
         </div>

@@ -1,392 +1,195 @@
-/* Services.css */
-
-.services-page {
-  width: 100%;
-}
-
-/* Hero Section */
+/* ── Hero ─────────────────────────────────── */
 .svc-hero {
-  padding: 120px 0 80px;
-  background: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(18, 203, 208, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 40%);
-  position: relative;
-  overflow: hidden;
-}
-
-.svc-hero-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 20px;
-  background-color: rgba(18, 203, 208, 0.1);
-  color: var(--primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 24px;
-  border: 1px solid rgba(18, 203, 208, 0.2);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  padding: 7rem 0 6rem;
 }
 
 .svc-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 1.1;
-  margin-bottom: 24px;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 .svc-hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  max-width: 800px;
-  margin: 0 auto 40px;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.78);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
-.svc-hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.svc-hero-actions .btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Problem Section */
-.svc-problem {
-  padding: 100px 0;
-}
-
-.svc-problem-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-@media (max-width: 992px) {
-  .svc-problem-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.svc-problem-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 24px;
-  color: var(--text-dark);
-}
-
-.svc-problem-intro {
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
-
-.svc-pain-points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ── Service List ─────────────────────────── */
+.svc-items {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5rem;
 }
 
-.svc-pain-points li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  font-size: 1.05rem;
-  color: var(--text-light);
-}
-
-.pain-icon {
-  color: #ef4444; /* red for pain points */
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.svc-problem-card {
-  background: white;
-  padding: 50px 40px;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  border-top: 4px solid var(--primary);
-}
-
-.svc-problem-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: var(--text-dark);
-}
-
-.svc-problem-card p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
-
-.svc-problem-card-footer {
-  padding-top: 24px;
-  border-top: 1px solid var(--border-color);
-  font-size: 1.2rem;
-  color: var(--primary);
-}
-
-/* Pillars Section */
-.svc-pillars-grid {
+.svc-item {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  grid-template-columns: 180px 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.svc-pillar-card {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border-color);
+.svc-item--reverse {
+  grid-template-columns: 1fr 180px;
 }
 
-.svc-pillar-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+.svc-item--reverse .svc-item-icon-wrap {
+  order: 2;
 }
 
-.svc-pillar-card.highlight {
-  border-color: var(--primary);
-  position: relative;
-  box-shadow: 0 10px 30px rgba(18, 203, 208, 0.1);
+.svc-item-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.svc-pillar-card.highlight::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -12px;
-  right: 20px;
+.svc-item-icon {
+  width: 120px;
+  height: 120px;
+  background: rgba(18, 203, 208, 0.1);
+  border: 2px solid rgba(18, 203, 208, 0.2);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.svc-item:hover .svc-item-icon {
   background: var(--primary);
   color: #fff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  text-transform: uppercase;
+  border-color: var(--primary);
+  box-shadow: 0 12px 28px rgba(18, 203, 208, 0.3);
 }
 
-.svc-pillar-icon {
-  width: 70px;
-  height: 70px;
-  background: rgba(18, 203, 208, 0.1);
-  color: var(--primary);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
+.svc-item-content h2 {
+  font-size: 1.75rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
 }
 
-.svc-pillar-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 16px;
-  color: var(--bg-dark);
-}
-
-.svc-pillar-card p {
-  color: var(--text-light);
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.svc-pillar-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.svc-pillar-features li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-dark);
-  font-weight: 500;
-}
-
-.svc-pillar-features li svg {
-  color: var(--primary);
-}
-
-/* System Section */
-.svc-system {
-  padding: 100px 0;
-}
-
-.svc-system-timeline {
-  max-width: 800px;
-  margin: 60px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  position: relative;
-}
-
-.svc-system-timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 28px;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-@media (max-width: 768px) {
-  .svc-system-timeline::before {
-    left: 24px;
-  }
-}
-
-.svc-system-step {
-  display: flex;
-  gap: 30px;
-  position: relative;
-  z-index: 1;
-}
-
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: var(--bg-dark);
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(18, 203, 208, 0.2);
-}
-
-@media (max-width: 768px) {
-  .step-number {
-    width: 50px;
-    height: 50px;
-    font-size: 1rem;
-  }
-}
-
-.step-content {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 30px;
-  border-radius: 12px;
-  flex-grow: 1;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.step-content:hover {
-  transform: translateX(5px);
-  border-color: rgba(18, 203, 208, 0.3);
-}
-
-.step-content h4 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  color: #fff;
-}
-
-.step-content p {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Outcomes Section */
-.svc-metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
-}
-
-.svc-metric-card {
-  text-align: center;
-  padding: 40px 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border: 1px solid var(--border-color);
-}
-
-.metric-icon {
-  width: 60px;
-  height: 60px;
-  background: rgba(18, 203, 208, 0.1);
-  color: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-}
-
-.metric-value {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--bg-dark);
-  margin-bottom: 10px;
-  line-height: 1;
-}
-
-.metric-label {
+.svc-item-content p {
   font-size: 1.1rem;
-  color: var(--text-light);
-  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
 
-.mt-xl {
-  margin-top: 60px;
-}
-
-/* Final CTA Section */
-.svc-final-cta {
-  padding: 100px 0;
-}
-
-.svc-final-cta h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--text-dark);
-}
-
-.svc-final-cta p {
-  font-size: 1.2rem;
-  color: var(--text-light);
-  max-width: 600px;
-  margin: 0 auto 40px;
-}
-
-.svc-cta-buttons {
+.svc-tags {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.btn-large {
-  padding: 16px 32px;
-  font-size: 1.1rem;
+.svc-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(18, 203, 208, 0.08);
+  color: var(--primary-dark);
+  border: 1px solid rgba(18, 203, 208, 0.25);
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-.down-arrow {
-  transform: rotate(45deg); /* Arrow pointing diagonally down indicating reduction */
+/* ── Bundle Callout ───────────────────────── */
+.svc-bundle {
+  padding: 6rem 0;
+}
+
+.svc-bundle-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bg-main);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 0 0 6px rgba(18, 203, 208, 0.06);
+}
+
+.svc-bundle-badge {
+  display: inline-block;
+  background: rgba(18, 203, 208, 0.1);
+  color: var(--primary-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.svc-bundle-card h2 {
+  font-size: 2rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.svc-bundle-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.svc-bundle-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.svc-bundle-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.svc-bundle-list li svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 768px) {
+  .svc-item,
+  .svc-item--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .svc-item--reverse .svc-item-icon-wrap {
+    order: 0;
+  }
+
+  .svc-item-icon {
+    margin: 0 auto;
+  }
+
+  .svc-tags {
+    justify-content: center;
+  }
+
+  .svc-bundle-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .svc-bundle-list {
+    text-align: left;
+  }
 }
