@@ -144,3 +144,141 @@
     gap: 1rem;
   }
 }
+
+/* ── Bullet lists ─────────────────────────── */
+.cs-detail-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cs-detail-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.cs-bullet-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ── Strategic Approach ───────────────────── */
+.cs-strategy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cs-strategy-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.cs-strategy-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(18, 203, 208, 0.1);
+  border: 2px solid rgba(18, 203, 208, 0.25);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cs-strategy-body h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cs-strategy-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cs-strategy-body ul li {
+  font-size: 0.975rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.cs-strategy-body ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* ── Performance Metrics Grid ─────────────── */
+.cs-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.cs-metric-card {
+  background: var(--bg-off);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.cs-metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.cs-metric-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Takeaway ─────────────────────────────── */
+.cs-takeaway {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  background: var(--bg-off);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ── Responsive additions ─────────────────── */
+@media (max-width: 640px) {
+  .cs-strategy-item {
+    grid-template-columns: 36px 1fr;
+    gap: 0.75rem;
+  }
+
+  .cs-strategy-num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .cs-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

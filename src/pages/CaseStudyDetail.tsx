@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, MessageCircle } from 'lucide-react';
+import { ArrowLeft, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
 import './CaseStudyDetail.css';
 
@@ -7,13 +7,14 @@ export default function CaseStudyDetail() {
   const { id } = useParams<{ id: string }>();
   const cs = caseStudies.find((c) => c.id === id);
 
-  // Redirect to case studies list if slug doesn't match
   if (!cs) return <Navigate to="/case-studies" replace />;
+
+  const isRich = !!cs.overview;
 
   return (
     <div className="cs-detail-page animate-fade-in">
 
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section className="cs-detail-hero section-dark">
         <div className="container">
           <Link to="/case-studies" className="cs-detail-back">
@@ -21,12 +22,11 @@ export default function CaseStudyDetail() {
           </Link>
 
           <div className="cs-detail-tag" style={{ color: cs.accentColor }}>
-            {cs.industry} · {cs.tags.join(' & ')}
+            {cs.industry} · {cs.tags.join(' · ')}
           </div>
 
           <h1 className="cs-detail-title">{cs.title}</h1>
 
-          {/* Stats bar */}
           <div className="cs-detail-stats">
             {cs.stats.map((s) => (
               <div key={s.label} className="cs-detail-stat">
@@ -38,30 +38,140 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
-      {/* Body */}
+      {/* ── Body ── */}
       <section className="cs-detail-body section section-light">
         <div className="container">
           <div className="cs-detail-content">
 
-            <div className="cs-detail-section">
-              <h2>The Problem</h2>
-              <p>{cs.problem}</p>
-            </div>
+            {/* ── RICH FORMAT ── */}
+            {isRich ? (
+              <>
+                {/* Overview */}
+                {cs.overview && (
+                  <div className="cs-detail-section">
+                    <h2>Overview</h2>
+                    <p>{cs.overview}</p>
+                  </div>
+                )}
 
-            <div className="cs-detail-section">
-              <h2>What We Did</h2>
-              <p>{cs.whatWeDid}</p>
-            </div>
+                {/* Challenge */}
+                {cs.challenge && cs.challenge.length > 0 && (
+                  <div className="cs-detail-section">
+                    <h2>The Challenge</h2>
+                    <ul className="cs-detail-bullets">
+                      {cs.challenge.map((item, i) => (
+                        <li key={i}>
+                          <CheckCircle2 size={15} className="cs-bullet-icon" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-            <div className="cs-detail-section">
-              <h2>The Result</h2>
-              <p>{cs.result}</p>
-            </div>
+                {/* Strategic Approach */}
+                {cs.strategicApproach && cs.strategicApproach.length > 0 && (
+                  <div className="cs-detail-section">
+                    <h2>Strategic Approach</h2>
+                    <div className="cs-strategy-list">
+                      {cs.strategicApproach.map((step, i) => (
+                        <div key={i} className="cs-strategy-item">
+                          <div className="cs-strategy-num">{String(i + 1).padStart(2, '0')}</div>
+                          <div className="cs-strategy-body">
+                            <h3>{step.title}</h3>
+                            <ul>
+                              {step.bullets.map((b, j) => (
+                                <li key={j}>{b}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-            {cs.quote && (
-              <blockquote className="cs-detail-quote">{cs.quote}</blockquote>
+                {/* Performance Metrics */}
+                {cs.performanceMetrics && cs.performanceMetrics.length > 0 && (
+                  <div className="cs-detail-section">
+                    <h2>Performance Snapshot</h2>
+                    <div className="cs-metrics-grid">
+                      {cs.performanceMetrics.map((m) => (
+                        <div key={m.label} className="cs-metric-card">
+                          <div className="cs-metric-value" style={{ color: cs.accentColor }}>{m.value}</div>
+                          <div className="cs-metric-label">{m.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* AI Insights */}
+                {cs.aiInsights && cs.aiInsights.length > 0 && (
+                  <div className="cs-detail-section">
+                    <h2>AI &amp; Performance Insights</h2>
+                    <ul className="cs-detail-bullets">
+                      {cs.aiInsights.map((item, i) => (
+                        <li key={i}>
+                          <CheckCircle2 size={15} className="cs-bullet-icon" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Business Impact */}
+                {cs.businessImpact && cs.businessImpact.length > 0 && (
+                  <div className="cs-detail-section">
+                    <h2>Business Impact</h2>
+                    <ul className="cs-detail-bullets">
+                      {cs.businessImpact.map((item, i) => (
+                        <li key={i}>
+                          <CheckCircle2 size={15} className="cs-bullet-icon" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Strategic Takeaway */}
+                {cs.strategicTakeaway && (
+                  <div className="cs-detail-section">
+                    <h2>Strategic Takeaway</h2>
+                    <p className="cs-takeaway">{cs.strategicTakeaway}</p>
+                  </div>
+                )}
+              </>
+            ) : (
+              /* ── SIMPLE FORMAT ── */
+              <>
+                {cs.problem && (
+                  <div className="cs-detail-section">
+                    <h2>The Problem</h2>
+                    <p>{cs.problem}</p>
+                  </div>
+                )}
+
+                {cs.whatWeDid && (
+                  <div className="cs-detail-section">
+                    <h2>What We Did</h2>
+                    <p>{cs.whatWeDid}</p>
+                  </div>
+                )}
+
+                {cs.result && (
+                  <div className="cs-detail-section">
+                    <h2>The Result</h2>
+                    <p>{cs.result}</p>
+                  </div>
+                )}
+
+                {cs.quote && (
+                  <blockquote className="cs-detail-quote">{cs.quote}</blockquote>
+                )}
+              </>
             )}
 
+            {/* CTA — shown on all formats */}
             <div className="cs-detail-cta">
               <p>Want results like this for your business?</p>
               <a
