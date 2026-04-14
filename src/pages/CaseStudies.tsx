@@ -3,9 +3,16 @@ import { ArrowRight } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
 import './CaseStudies.css';
 
+import SEO from '../components/SEO';
+
 export default function CaseStudies() {
   return (
     <div className="case-studies-page animate-fade-in">
+      <SEO 
+        title="SEO & Client Case Studies" 
+        description="Every case study is a real growth story with real numbers. See how we help service businesses scale their organic and paid traffic."
+        canonical="/case-studies"
+      />
 
       {/* Hero */}
       <section className="cs-page-header section-dark text-center">

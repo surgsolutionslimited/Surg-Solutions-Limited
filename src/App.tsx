@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BottomCTA from './components/BottomCTA';
@@ -14,7 +14,7 @@ import About from './pages/About';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <div className="app-container">
         <Navbar />
@@ -32,7 +32,7 @@ function App() {
         <Footer />
         <FloatingCTA />
       </div>
-    </BrowserRouter>
+    </>
   );
 }
 

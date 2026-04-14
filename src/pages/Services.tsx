@@ -32,9 +32,16 @@ const services = [
   },
 ];
 
+import SEO from '../components/SEO';
+
 export default function Services() {
   return (
     <div className="services-page animate-fade-in">
+      <SEO 
+        title="Our Services" 
+        description="We build complete growth systems. Explore our Website Design, SEO & AIO, Ads Management, and Automation services."
+        canonical="/services"
+      />
 
       {/* Hero */}
       <section className="svc-hero section-dark text-center">

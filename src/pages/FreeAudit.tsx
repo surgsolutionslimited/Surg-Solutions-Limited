@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
 import './FreeAudit.css';
 
+import SEO from '../components/SEO';
+
 export default function FreeAudit() {
   const [hasSocial, setHasSocial] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,6 +39,11 @@ export default function FreeAudit() {
 
   return (
     <div className="audit-page animate-fade-in section-gray">
+      <SEO 
+        title="Free Growth System Audit" 
+        description="Request a free breakdown of your current growth system and discover where you're losing time, efficiency, and revenue."
+        canonical="/free-audit"
+      />
       <div className="container audit-container">
         
         {/* Left Column: Copy & Value */}

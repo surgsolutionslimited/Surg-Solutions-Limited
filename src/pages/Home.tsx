@@ -5,9 +5,38 @@ import ServicePillars from '../components/ServicePillars';
 import Methodology from '../components/Methodology';
 import CaseStudyPreview from '../components/CaseStudyPreview';
 
+import SEO from '../components/SEO';
+
 export default function Home() {
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Surg Solutions",
+      "url": "https://surgsolutions.com",
+      "logo": "https://surgsolutions.com/src/assets/logo-dark.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Surg Solutions | Enterprise SEO & AIO Agency",
+      "url": "https://surgsolutions.com"
+    }
+  ];
+
   return (
     <>
+      <SEO 
+        title="Enterprise SEO & AIO Agency" 
+        description="ROI-driven search visibility. We deploy data-driven SEO, AIO, and Google Ads strategies to scale B2B enterprises. Dominate your market share."
+        canonical="/"
+        schema={schema}
+      />
       <Hero />
       <TrustBar />
       <ProblemSection />

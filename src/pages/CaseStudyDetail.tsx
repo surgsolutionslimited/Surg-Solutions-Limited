@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
 import './CaseStudyDetail.css';
+import SEO from '../components/SEO';
 
 export default function CaseStudyDetail() {
   const { id } = useParams<{ id: string }>();
@@ -13,6 +14,11 @@ export default function CaseStudyDetail() {
 
   return (
     <div className="cs-detail-page animate-fade-in">
+      <SEO 
+        title={`${cs.title} | ${cs.industry}`}
+        description={`Case study: ${cs.industry} - ${cs.stat} ${cs.statLabel}. Learn how we achieved these results.`}
+        canonical={`/case-studies/${cs.id}`}
+      />
 
       {/* ── Hero ── */}
       <section className="cs-detail-hero section-dark">

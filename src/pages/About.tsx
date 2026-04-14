@@ -27,9 +27,16 @@ const steps = [
   },
 ];
 
+import SEO from '../components/SEO';
+
 export default function About() {
   return (
     <div className="about-page animate-fade-in">
+      <SEO 
+        title="About Us" 
+        description="Learn more about Surg Solutions and our founder, Chuks. We build scalable, reliable growth systems to attract and convert clients."
+        canonical="/about"
+      />
 
       {/* Founder Intro */}
       <section className="about-hero section-dark">
