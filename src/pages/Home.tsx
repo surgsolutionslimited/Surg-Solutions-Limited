@@ -17,14 +17,14 @@ export default function Home() {
       "logo": "https://surgsolutions.com/src/assets/logo-dark.png",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "",
+        "telephone": "+2349079969206",
         "contactType": "customer service"
       }
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Surg Solutions | Enterprise SEO & AIO Agency",
+      "name": "Surg Solutions | SEO, AIO & Digital Growth Systems",
       "url": "https://surgsolutions.com"
     }
   ];
@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="Enterprise SEO & AIO Agency" 
+        title="SEO, AIO & Digital Growth Systems"
         description="ROI-driven search visibility. We deploy data-driven SEO, AIO, and Google Ads strategies to scale B2B enterprises. Dominate your market share."
         canonical="/"
         schema={schema}

@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
@@ -17,14 +17,9 @@ export default function Hero() {
             We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably, without the manual hustle.
           </p>
           <div className="hero-actions">
-            <a
-              href="https://wa.link/a2gatg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <MessageCircle size={20} /> Get in Touch
-            </a>
+            <Link to="/audit" className="btn btn-primary">
+              Get Free Growth Audit <ArrowRight size={18} />
+            </Link>
             <Link to="/case-studies" className="btn btn-outline">
               See Our Work <ArrowRight size={18} />
             </Link>

@@ -14,12 +14,23 @@ const baseRoutes = [
   '/services',
   '/case-studies',
   '/free-audit',
-  '/about'
+  '/about',
+  '/audit'
+]
+
+// Funnel sub-pages are pre-rendered for resilience but excluded from sitemap
+const funnelSubRoutes = [
+  '/audit/apply',
+  '/audit/book',
+  '/audit/thank-you'
 ]
 
 const dynamicRoutes = ids.map(id => `/case-studies/${id}`)
 
-const allRoutes = [...baseRoutes, ...dynamicRoutes]
+const allRoutes = [...baseRoutes, ...dynamicRoutes, ...funnelSubRoutes]
+
+// Only these routes appear in the sitemap
+const sitemapRoutes = new Set([...baseRoutes, ...dynamicRoutes])
 
 async function build() {
   const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
@@ -59,13 +70,16 @@ async function build() {
     fs.writeFileSync(toAbsolute(filePath), html)
     console.log('Pre-rendered:', filePath)
     
-    sitemapEntries.push(`
+    if (sitemapRoutes.has(url)) {
+      const priority = url === '/' ? '1.0' : url === '/audit' ? '0.7' : '0.8'
+      sitemapEntries.push(`
   <url>
     <loc>https://surgsolutions.com${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${url === '/' ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${url === '/' ? '1.0' : '0.8'}</priority>
+    <priority>${priority}</priority>
   </url>`)
+    }
   }
 
   // Generate Sitemap

@@ -1,4 +1,5 @@
-import { MessageCircle, Globe, Search, TrendingUp, Zap, CheckCircle2 } from 'lucide-react';
+import { Globe, Search, TrendingUp, Zap, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Services.css';
 
 const services = [
@@ -97,14 +98,9 @@ export default function Services() {
               <li><CheckCircle2 size={18} /> Google Ads &amp; Meta Ads management</li>
               <li><CheckCircle2 size={18} /> Growth automation &amp; reporting</li>
             </ul>
-            <a
-              href="https://wa.link/a2gatg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <MessageCircle size={18} /> Get in Touch
-            </a>
+            <Link to="/audit" className="btn btn-primary">
+              Get Free Growth Audit
+            </Link>
           </div>
         </div>
       </section>

@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 export default function SEO({ title, description, canonical, ogImage, schema }: SEOProps) {
-  const fullTitle = `${title} | Surg Solutions`;
+  const fullTitle = `Surg Solutions | ${title}`;
   const defaultImage = 'https://surgsolutions.com/src/assets/logo-dark.png'; // Update with an absolute URL to your actual social share image
   const siteUrl = 'https://surgsolutions.com';
   const url = canonical ? `${siteUrl}${canonical}` : siteUrl;

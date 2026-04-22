@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './FloatingCTA.css';
 
 export default function FloatingCTA() {
@@ -14,15 +15,13 @@ export default function FloatingCTA() {
   }, []);
 
   return (
-    <a
-      href="https://wa.link/a2gatg"
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to="/audit"
       className={`floating-cta ${visible ? 'floating-cta--visible' : ''}`}
-      aria-label="Get in Touch on WhatsApp"
+      aria-label="Get Free Growth Audit"
     >
-      <MessageCircle size={22} />
-      <span className="floating-cta-label">Get in Touch</span>
-    </a>
+      <ArrowRight size={22} />
+      <span className="floating-cta-label">Get Free Growth Audit</span>
+    </Link>
   );
 }
