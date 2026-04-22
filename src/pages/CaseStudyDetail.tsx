@@ -12,12 +12,39 @@ export default function CaseStudyDetail() {
 
   const isRich = !!cs.overview;
 
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": cs.title,
+    "description": `Case study: ${cs.industry} — ${cs.stat} ${cs.statLabel}.`,
+    "author": {
+      "@type": "Organization",
+      "name": "Surg Solutions",
+      "url": "https://surgsolutions.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Surg Solutions",
+      "url": "https://surgsolutions.com"
+    },
+    "url": `https://surgsolutions.com/case-studies/${cs.id}`,
+    "about": {
+      "@type": "Service",
+      "name": cs.tags.join(', '),
+      "provider": {
+        "@type": "Organization",
+        "name": "Surg Solutions"
+      }
+    }
+  };
+
   return (
     <div className="cs-detail-page animate-fade-in">
-      <SEO 
+      <SEO
         title={`${cs.title} | ${cs.industry}`}
-        description={`Case study: ${cs.industry} - ${cs.stat} ${cs.statLabel}. Learn how we achieved these results.`}
+        description={`Case study: ${cs.industry} — ${cs.stat} ${cs.statLabel}. Learn how Surg Solutions achieved these results.`}
         canonical={`/case-studies/${cs.id}`}
+        schema={caseStudySchema}
       />
 
       {/* ── Hero ── */}

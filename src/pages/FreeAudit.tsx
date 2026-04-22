@@ -71,7 +71,7 @@ export default function FreeAudit() {
               <div>
                 <h4>Don't have a website yet?</h4>
                 <p>Call us directly to discuss your strategy.</p>
-                <a href="tel:+18001234567" className="phone-link">+1 (800) 123-4567</a>
+                <a href="https://wa.link/a2gatg" target="_blank" rel="noopener noreferrer" className="phone-link">Message on WhatsApp</a>
               </div>
             </div>
           </div>

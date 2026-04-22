@@ -14,7 +14,7 @@ export default function Home() {
       "@type": "Organization",
       "name": "Surg Solutions",
       "url": "https://surgsolutions.com",
-      "logo": "https://surgsolutions.com/src/assets/logo-dark.png",
+      "logo": "https://surgsolutions.com/logo-dark.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+2349079969206",

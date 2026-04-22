@@ -29,13 +29,46 @@ const steps = [
 
 import SEO from '../components/SEO';
 
+const aboutSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chuks",
+    "jobTitle": "Founder & Digital Growth Strategist",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Surg Solutions",
+      "url": "https://surgsolutions.com"
+    },
+    "url": "https://surgsolutions.com/about",
+    "description": "Digital growth strategist helping service businesses build systems that attract and convert clients — website design, SEO, paid ads, and automation."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Surg Solutions",
+    "url": "https://surgsolutions.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Chuks"
+    },
+    "description": "Surg Solutions builds complete digital growth systems — websites, SEO, ads, and automation — for service businesses.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "English"
+    }
+  }
+];
+
 export default function About() {
   return (
     <div className="about-page animate-fade-in">
-      <SEO 
-        title="About Us" 
+      <SEO
+        title="About Us"
         description="Learn more about Surg Solutions and our founder, Chuks. We build scalable, reliable growth systems to attract and convert clients."
         canonical="/about"
+        schema={aboutSchema}
       />
 
       {/* Founder Intro */}
@@ -43,7 +76,7 @@ export default function About() {
         <div className="container">
           <div className="about-hero-inner">
             <div className="about-avatar">
-              <img src={chuksHeadshot} alt="Chuks — Founder of Surg Solutions" />
+              <img src={chuksHeadshot} alt="Chuks — Founder of Surg Solutions" width="400" height="400" loading="lazy" decoding="async" />
             </div>
             <div className="about-intro-text">
               <span className="about-tag">Founder, Surg Solutions</span>

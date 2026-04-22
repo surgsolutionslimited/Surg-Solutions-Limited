@@ -9,6 +9,9 @@ import CaseStudyDetail from './pages/CaseStudyDetail';
 import Services from './pages/Services';
 import FreeAudit from './pages/FreeAudit';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 
 import AuditLanding from './pages/audit/AuditLanding';
 import AuditApply from './pages/audit/AuditApply';
@@ -27,6 +30,9 @@ function App() {
           <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
           <Route path="/free-audit" element={<FreeAudit />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route element={<FunnelLayout />}>
           <Route path="/audit" element={<AuditLanding />} />

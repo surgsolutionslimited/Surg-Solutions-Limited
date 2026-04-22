@@ -38,7 +38,9 @@ const baseRoutes = [
   '/case-studies',
   '/free-audit',
   '/about',
-  '/audit'
+  '/audit',
+  '/privacy-policy',
+  '/terms'
 ]
 
 // Funnel sub-pages are pre-rendered for resilience but excluded from sitemap
@@ -95,12 +97,12 @@ async function build() {
     console.log('Pre-rendered:', filePath)
     
     if (sitemapRoutes.has(url)) {
-      const priority = url === '/' ? '1.0' : url === '/audit' ? '0.7' : '0.8'
+      const priority = url === '/' ? '1.0' : url === '/audit' ? '0.7' : (url === '/privacy-policy' || url === '/terms') ? '0.3' : '0.8'
       sitemapEntries.push(`
   <url>
     <loc>https://surgsolutions.com${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>${url === '/' ? 'weekly' : 'monthly'}</changefreq>
+    <changefreq>${url === '/' ? 'weekly' : (url === '/privacy-policy' || url === '/terms') ? 'yearly' : 'monthly'}</changefreq>
     <priority>${priority}</priority>
   </url>`)
     }
