@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node prerender.mjs",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "npm run build && wrangler deploy --config wrangler.jsonc",
     "lint": "eslint .",
-    "preview": "npm run build && wrangler dev"
+    "preview": "npm run build && wrangler dev --config wrangler.jsonc"
   },
   "dependencies": {
     "lucide-react": "^0.577.0",
