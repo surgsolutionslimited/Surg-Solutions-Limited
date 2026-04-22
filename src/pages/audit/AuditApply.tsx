@@ -9,13 +9,14 @@ declare global {
   }
 }
 
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfN2_D9OSnKnD9XlKtqNFfA6_dBpS-k1zzwT4lkeDPRMDNtXHR4a4acmXWYhEBFzd-/exec';
 
 interface FormData {
   fullName: string;
+  email: string;
   whatsapp: string;
   businessName: string;
-  whatSells: string;
+  services: string;
   adSpend: string;
   websiteUrl: string;
 }
@@ -28,9 +29,10 @@ export default function AuditApply() {
   const [submitError, setSubmitError] = useState('');
   const [form, setForm] = useState<FormData>({
     fullName: '',
+    email: '',
     whatsapp: '',
     businessName: '',
-    whatSells: '',
+    services: '',
     adSpend: '',
     websiteUrl: '',
   });
@@ -70,7 +72,7 @@ export default function AuditApply() {
     e.preventDefault();
     setSubmitError('');
 
-    const required: (keyof FormData)[] = ['fullName', 'whatsapp', 'businessName', 'whatSells', 'adSpend'];
+    const required: (keyof FormData)[] = ['fullName', 'email', 'whatsapp', 'businessName', 'services', 'adSpend'];
     const invalid = new Set(required.filter(f => !form[f].trim()));
     if (invalid.size > 0) {
       setErrors(invalid);
@@ -93,7 +95,7 @@ export default function AuditApply() {
           currency: 'USD'
         });
         window.fbq('trackCustom', 'FormSubmit', {
-          business_category: form.whatSells,
+          business_category: form.services,
           ad_spend_range: form.adSpend
         });
       }
@@ -133,6 +135,20 @@ export default function AuditApply() {
           </div>
 
           <div className="audit-form-group">
+            <label htmlFor="email">Email address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              value={form.email}
+              onChange={handleChange}
+              className={errors.has('email') ? 'field-error' : ''}
+            />
+            {errors.has('email') && <span className="field-error-msg">This field is required</span>}
+          </div>
+
+          <div className="audit-form-group">
             <label htmlFor="whatsapp">WhatsApp number</label>
             <input
               id="whatsapp"
@@ -161,17 +177,17 @@ export default function AuditApply() {
           </div>
 
           <div className="audit-form-group">
-            <label htmlFor="whatSells">What does your business sell?</label>
+            <label htmlFor="services">Services</label>
             <input
-              id="whatSells"
-              name="whatSells"
+              id="services"
+              name="services"
               type="text"
-              placeholder="Describe your products or services"
-              value={form.whatSells}
+              placeholder="e.g. SEO, Google Ads, Web Design"
+              value={form.services}
               onChange={handleChange}
-              className={errors.has('whatSells') ? 'field-error' : ''}
+              className={errors.has('services') ? 'field-error' : ''}
             />
-            {errors.has('whatSells') && <span className="field-error-msg">This field is required</span>}
+            {errors.has('services') && <span className="field-error-msg">This field is required</span>}
           </div>
 
           <div className="audit-form-group">
