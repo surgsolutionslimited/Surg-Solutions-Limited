@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfN2_D9OSnKnD9XlKtqNFfA6_dBpS-k1zzwT4lkeDPRMDNtXHR4a4acmXWYhEBFzd-/exec';
 
 export default function AuditThankYou() {
   const [form, setForm] = useState({ fullName: '', email: '', whatsapp: '' });
