@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import './AuditBook.css';
 
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 export default function AuditBook() {
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
@@ -14,6 +20,16 @@ export default function AuditBook() {
     }
     setReady(true);
 
+    // Track page view
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Calendar Booking Page',
+        content_type: 'funnel_page',
+        value: 0,
+        currency: 'USD'
+      });
+    }
+
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
@@ -22,7 +38,15 @@ export default function AuditBook() {
     function handleMessage(e: MessageEvent) {
       if (e.data && e.data.event === 'calendly.event_scheduled') {
         if (typeof window !== 'undefined' && window.fbq) {
-          window.fbq('trackCustom', 'CallBooked');
+          window.fbq('track', 'Purchase', {
+            content_name: 'Strategy Call Booked',
+            content_type: 'conversion',
+            value: 0,
+            currency: 'USD'
+          });
+          window.fbq('trackCustom', 'CallBooked', {
+            conversion_type: 'strategy_call'
+          });
         }
       }
     }

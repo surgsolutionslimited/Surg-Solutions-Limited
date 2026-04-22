@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import './AuditApply.css';
 
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
 
 interface FormData {
@@ -34,6 +40,15 @@ export default function AuditApply() {
       navigate('/audit', { replace: true });
     } else {
       setReady(true);
+      // Track page view
+      if (window.fbq) {
+        window.fbq('track', 'ViewContent', {
+          content_name: 'Audit Application Form',
+          content_type: 'funnel_page',
+          value: 0,
+          currency: 'USD'
+        });
+      }
     }
   }, [navigate]);
 
@@ -44,6 +59,10 @@ export default function AuditApply() {
     setForm(prev => ({ ...prev, [name]: value }));
     if (errors.has(name)) {
       setErrors(prev => { const s = new Set(prev); s.delete(name); return s; });
+    }
+    // Track form interaction
+    if (typeof window !== 'undefined' && window.fbq && !errors.has(name)) {
+      window.fbq('trackCustom', 'FormFieldFilled', { field: name });
     }
   }
 
@@ -67,7 +86,16 @@ export default function AuditApply() {
         body: JSON.stringify({ ...form, type: 'qualified' }),
       });
       if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('trackCustom', 'FormSubmit');
+        window.fbq('track', 'AddPaymentInfo', {
+          content_name: 'Qualified Lead - Application Submitted',
+          content_type: 'funnel_action',
+          value: 0,
+          currency: 'USD'
+        });
+        window.fbq('trackCustom', 'FormSubmit', {
+          business_category: form.whatSells,
+          ad_spend_range: form.adSpend
+        });
       }
       sessionStorage.setItem('auditFormComplete', 'true');
       navigate('/audit/book');

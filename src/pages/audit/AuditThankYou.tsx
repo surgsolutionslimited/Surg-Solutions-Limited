@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SEO from '../../components/SEO';
 import './AuditThankYou.css';
+
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
 
@@ -9,6 +15,18 @@ export default function AuditThankYou() {
   const [errors, setErrors] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Track page view for nurture funnel
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Nurture Lead - Thank You Page',
+        content_type: 'funnel_page',
+        value: 0,
+        currency: 'USD'
+      });
+    }
+  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -34,7 +52,16 @@ export default function AuditThankYou() {
         body: JSON.stringify({ ...form, type: 'nurture' }),
       });
       if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('trackCustom', 'NurtureLead');
+        window.fbq('track', 'AddPaymentInfo', {
+          content_name: 'Nurture Lead - Guide Request Submitted',
+          content_type: 'funnel_action',
+          value: 0,
+          currency: 'USD'
+        });
+        window.fbq('trackCustom', 'NurtureLead', {
+          lead_source: 'guide_request',
+          email: form.email
+        });
       }
       setSubmitted(true);
     } catch {

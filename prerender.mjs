@@ -1,9 +1,32 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const toAbsolute = (p) => path.resolve(__dirname, p)
+
+function resolveServerEntry() {
+  const directEntry = toAbsolute('dist/server/entry-server.js')
+  if (fs.existsSync(directEntry)) {
+    return directEntry
+  }
+
+  const serverDir = toAbsolute('dist/server')
+  if (!fs.existsSync(serverDir)) {
+    throw new Error('SSR output directory not found: dist/server')
+  }
+
+  const candidates = fs.readdirSync(serverDir, { recursive: true })
+    .filter((file) => typeof file === 'string' && /^entry-server.*\.js$/.test(path.basename(file)))
+    .map((file) => path.join(serverDir, file))
+    .sort((a, b) => a.length - b.length)
+
+  if (candidates.length > 0) {
+    return candidates[0]
+  }
+
+  throw new Error('Could not find an SSR entry bundle in dist/server')
+}
 
 // Read raw TS file to extract IDs
 const caseStudiesTs = fs.readFileSync(toAbsolute('src/data/caseStudies.ts'), 'utf-8')
@@ -34,7 +57,8 @@ const sitemapRoutes = new Set([...baseRoutes, ...dynamicRoutes])
 
 async function build() {
   const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
-  const { render } = await import('./dist/server/entry-server.js')
+  const serverEntry = resolveServerEntry()
+  const { render } = await import(pathToFileURL(serverEntry).href)
   
   let sitemapEntries = []
 
