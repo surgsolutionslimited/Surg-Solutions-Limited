@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-const FORM_ENDPOINT = 'https://docs.google.com/forms/d/e/1FAIpQLSe02834KjSGEyFrhX26cZgnD46Nz7jzvBrjyssSlXTXm77Eng/formResponse';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
 
 interface FormData {
   fullName: string;
@@ -83,13 +83,13 @@ export default function AuditApply() {
         method: 'POST',
         mode: 'no-cors',
         body: new URLSearchParams({
-          'entry.1775219185': form.fullName,
-          'entry.2069549997': form.email,
-          'entry.124181063':  form.whatsapp,
-          'entry.1889593317': form.businessName,
-          'entry.1506920286': form.services,
-          'entry.849248797':  form.adSpend,
-          'entry.593916911':  form.websiteUrl,
+          fullName:     form.fullName,
+          email:        form.email,
+          whatsapp:     form.whatsapp,
+          businessName: form.businessName,
+          services:     form.services,
+          adSpend:      form.adSpend,
+          website:      form.websiteUrl,
         }),
       });
       if (window.fbq) {
