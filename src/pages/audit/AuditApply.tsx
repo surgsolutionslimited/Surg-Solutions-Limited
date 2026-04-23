@@ -84,8 +84,16 @@ export default function AuditApply() {
       await fetch(FORM_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, type: 'qualified' }),
+        body: new URLSearchParams({
+          fullName: form.fullName,
+          email: form.email,
+          whatsapp: form.whatsapp,
+          businessName: form.businessName,
+          services: form.services,
+          adSpend: form.adSpend,
+          website: form.websiteUrl,
+          type: 'qualified',
+        }),
       });
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'AddPaymentInfo', {

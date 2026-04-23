@@ -48,8 +48,12 @@ export default function AuditThankYou() {
       await fetch(FORM_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, type: 'nurture' }),
+        body: new URLSearchParams({
+          fullName: form.fullName,
+          email: form.email,
+          whatsapp: form.whatsapp,
+          type: 'nurture',
+        }),
       });
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'AddPaymentInfo', {
