@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import SEO from '../../components/SEO';
 import './AuditApply.css';
 
@@ -9,7 +10,10 @@ declare global {
   }
 }
 
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyU3tFNZ1mpUhJ6VuiH4DKkF-CRUe5qgv-56OwbAqULjhqvJMghJLXNpYffbQyRumhO2g/exec';
+const EMAILJS_SERVICE_ID = 'service_quldgnl';
+const EMAILJS_PUBLIC_KEY = '_sdJMcDD1eULBwyXv';
+const EMAILJS_NOTIFY_TEMPLATE = 'template_75p0z4m'; // replace after creating in EmailJS dashboard
+const EMAILJS_REPLY_TEMPLATE = 'template_ov87tsl';   // replace after creating in EmailJS dashboard
 
 interface FormData {
   fullName: string;
@@ -79,19 +83,24 @@ export default function AuditApply() {
 
     setIsSubmitting(true);
     try {
-      await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams({
-          fullName:     form.fullName,
-          email:        form.email,
-          whatsapp:     form.whatsapp,
-          businessName: form.businessName,
-          services:     form.services,
-          adSpend:      form.adSpend,
-          website:      form.websiteUrl,
-        }),
-      });
+      const leadData = {
+        from_name:     form.fullName,
+        from_email:    form.email,
+        whatsapp:      form.whatsapp,
+        business_name: form.businessName,
+        services:      form.services,
+        ad_spend:      form.adSpend,
+        website:       form.websiteUrl || 'Not provided',
+      };
+
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE, leadData, EMAILJS_PUBLIC_KEY);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_REPLY_TEMPLATE,
+        { to_name: form.fullName, to_email: form.email },
+        EMAILJS_PUBLIC_KEY
+      );
+
       if (window.fbq) {
         window.fbq('track', 'AddPaymentInfo', {
           content_name: 'Qualified Lead - Application Submitted',
