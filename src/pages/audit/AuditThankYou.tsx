@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import SEO from '../../components/SEO';
 import './AuditThankYou.css';
 
@@ -8,7 +9,9 @@ declare global {
   }
 }
 
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfN2_D9OSnKnD9XlKtqNFfA6_dBpS-k1zzwT4lkeDPRMDNtXHR4a4acmXWYhEBFzd-/exec';
+const EMAILJS_SERVICE_ID = 'service_quldgnl';
+const EMAILJS_PUBLIC_KEY = '_sdJMcDD1eULBwyXv';
+const EMAILJS_GUIDE_TEMPLATE = 'template_jjhtvkv';
 
 export default function AuditThankYou() {
   const [form, setForm] = useState({ fullName: '', email: '', whatsapp: '' });
@@ -45,16 +48,12 @@ export default function AuditThankYou() {
 
     setIsSubmitting(true);
     try {
-      await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams({
-          fullName: form.fullName,
-          email: form.email,
-          whatsapp: form.whatsapp,
-          type: 'nurture',
-        }),
-      });
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_GUIDE_TEMPLATE,
+        { to_name: form.fullName, to_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        EMAILJS_PUBLIC_KEY
+      );
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'AddPaymentInfo', {
           content_name: 'Nurture Lead - Guide Request Submitted',
