@@ -1,49 +1,49 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import logoLight from '../assets/logo-light.png';
-import logoDark from '../assets/logo-dark.png';
-import './Navbar.css';
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const isDarkBg = false;
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
-    <header className={`navbar ${isDarkBg ? 'navbar-dark' : 'navbar-light'}`}>
+    <header className="navbar navbar-light">
       <div className="container navbar-container">
-        <Link to="/" className="navbar-logo">
-          <img src={isDarkBg ? logoLight : logoDark} alt="Surg Solutions Logo" />
+        <Link href="/" className="navbar-logo">
+          <Image src="/logo-dark.png" alt="Surg Solutions" width={417} height={224} priority />
         </Link>
 
-        <nav className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/services" className={location.pathname.startsWith('/services') ? 'active' : ''} onClick={() => setIsOpen(false)}>Services</Link>
-          <Link to="/case-studies" className={location.pathname.startsWith('/case-studies') ? 'active' : ''} onClick={() => setIsOpen(false)}>Case Studies</Link>
-          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setIsOpen(false)}>About</Link>
+        <nav className={`navbar-links ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
+          <Link href="/" className={pathname === '/' ? 'active' : ''} onClick={() => setIsOpen(false)}>Home</Link>
+          <Link href="/services" className={pathname.startsWith('/services') ? 'active' : ''} onClick={() => setIsOpen(false)}>Services</Link>
+          <Link href="/case-studies" className={pathname.startsWith('/case-studies') ? 'active' : ''} onClick={() => setIsOpen(false)}>Case Studies</Link>
+          <Link href="/about" className={pathname === '/about' ? 'active' : ''} onClick={() => setIsOpen(false)}>About</Link>
           <div className="navbar-cta-mobile">
-            <Link
-              to="/audit"
-              className="btn btn-primary navbar-cta-btn"
-              onClick={() => setIsOpen(false)}
-            >
+            <Link href="/audit" className="btn btn-primary navbar-cta-btn" onClick={() => setIsOpen(false)}>
               Get Free Growth Audit
             </Link>
           </div>
         </nav>
 
         <div className="navbar-cta-desktop">
-          <Link to="/audit" className="btn btn-primary navbar-cta-btn">
+          <Link href="/audit" className="btn btn-primary navbar-cta-btn">
             Get Free Growth Audit
           </Link>
         </div>
 
-        <button className="navbar-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+        <button
+          className="navbar-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+        >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
     </header>
-  );
+  )
 }
-

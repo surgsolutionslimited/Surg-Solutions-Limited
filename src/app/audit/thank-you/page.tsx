@@ -1,0 +1,110 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
+
+declare global {
+  interface Window { fbq?: (...args: unknown[]) => void }
+}
+
+const EMAILJS_SERVICE_ID = 'service_quldgnl'
+const EMAILJS_PUBLIC_KEY = '_sdJMcDD1eULBwyXv'
+const EMAILJS_GUIDE_TEMPLATE = 'template_jjhtvkv'
+const EMAILJS_NOTIFY_TEMPLATE = 'template_h8qut24'
+
+export default function AuditThankYouPage() {
+  const [form, setForm] = useState({ fullName: '', email: '', whatsapp: '' })
+  const [errors, setErrors] = useState<Set<string>>(new Set())
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (window.fbq) {
+      window.fbq('track', 'ViewContent', { content_name: 'Nurture Lead - Thank You Page', content_type: 'funnel_page' })
+    }
+  }, [])
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target
+    setForm(prev => ({ ...prev, [name]: value }))
+    if (errors.has(name)) {
+      setErrors(prev => { const s = new Set(prev); s.delete(name); return s })
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const invalid = new Set<string>()
+    if (!form.fullName.trim()) invalid.add('fullName')
+    if (!form.email.trim()) invalid.add('email')
+    if (invalid.size > 0) { setErrors(invalid); return }
+
+    setIsSubmitting(true)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_NOTIFY_TEMPLATE,
+        { from_name: form.fullName, from_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        EMAILJS_PUBLIC_KEY
+      )
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_GUIDE_TEMPLATE,
+        { to_name: form.fullName, to_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        EMAILJS_PUBLIC_KEY
+      )
+      if (window.fbq) {
+        window.fbq('track', 'AddPaymentInfo', { content_name: 'Nurture Lead - Guide Request Submitted' })
+        window.fbq('trackCustom', 'NurtureLead', { lead_source: 'guide_request', email: form.email })
+      }
+      setSubmitted(true)
+    } catch {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <div className="audit-thankyou">
+      <div className="audit-thankyou-card">
+        <h1>No Problem, Here&apos;s Something That&apos;ll Help You First</h1>
+        <p className="audit-thankyou-intro">
+          Before running ads, there are three things every business needs in place to make sure the money you spend actually works. Most businesses skip all three.
+        </p>
+        <div className="audit-guide-box">
+          <p>
+            <strong>Free Guide</strong>
+            We&apos;ve put together a short guide that walks you through exactly what to set up first — and it&apos;s free.
+            <br /><br />
+            <em>&ldquo;Why Your Business Isn&apos;t Growing Consistently (Even If You Run Ads)&rdquo;</em>
+          </p>
+        </div>
+
+        {submitted ? (
+          <p className="audit-success-msg">Check your inbox — we&apos;ll send it over within a few minutes.</p>
+        ) : (
+          <form className="audit-nurture-form" onSubmit={handleSubmit} noValidate>
+            <div className="audit-form-group">
+              <label htmlFor="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" placeholder="Your full name" value={form.fullName} onChange={handleChange} className={errors.has('fullName') ? 'field-error' : ''} />
+              {errors.has('fullName') && <span className="field-error-msg">This field is required</span>}
+            </div>
+            <div className="audit-form-group">
+              <label htmlFor="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} className={errors.has('email') ? 'field-error' : ''} />
+              {errors.has('email') && <span className="field-error-msg">This field is required</span>}
+            </div>
+            <div className="audit-form-group">
+              <label htmlFor="whatsapp">
+                WhatsApp number <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.8rem' }}>(optional)</span>
+              </label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="+234..." value={form.whatsapp} onChange={handleChange} />
+            </div>
+            <button type="submit" className="btn btn-primary audit-submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Me the Guide'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  )
+}
