@@ -12,6 +12,7 @@ declare global {
 const EMAILJS_SERVICE_ID = 'service_quldgnl';
 const EMAILJS_PUBLIC_KEY = '_sdJMcDD1eULBwyXv';
 const EMAILJS_GUIDE_TEMPLATE = 'template_jjhtvkv';
+const EMAILJS_NOTIFY_TEMPLATE = 'template_h8qut24';
 
 export default function AuditThankYou() {
   const [form, setForm] = useState({ fullName: '', email: '', whatsapp: '' });
@@ -48,6 +49,12 @@ export default function AuditThankYou() {
 
     setIsSubmitting(true);
     try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_NOTIFY_TEMPLATE,
+        { from_name: form.fullName, from_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        EMAILJS_PUBLIC_KEY
+      );
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_GUIDE_TEMPLATE,
