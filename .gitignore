@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 .next
 .next/cache
+out
 dist
 dist-ssr
 *.tsbuildinfo
