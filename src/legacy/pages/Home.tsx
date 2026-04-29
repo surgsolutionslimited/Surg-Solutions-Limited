@@ -13,8 +13,8 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Surg Solutions",
-      "url": "https://surgsolutions.com",
-      "logo": "https://surgsolutions.com/logo-dark.png",
+      "url": "https://surgsolutions.online",
+      "logo": "https://surgsolutions.online/logo-dark.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+2349079969206",
@@ -25,7 +25,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Surg Solutions | SEO, AIO & Digital Growth Systems",
-      "url": "https://surgsolutions.com"
+      "url": "https://surgsolutions.online"
     }
   ];
 

@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
 
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>1. Who We Are</h2>
-          <p>Surg Solutions Ltd ("Surg Solutions", "we", "our") operates surgsolutions.com. We provide digital growth services including website design, SEO, paid advertising, and growth automation. Contact us at <a href="mailto:surgsolutionslimited@gmail.com" style={{ color: 'var(--primary)' }}>surgsolutionslimited@gmail.com</a>.</p>
+          <p>Surg Solutions Ltd ("Surg Solutions", "we", "our") operates surgsolutions.online. We provide digital growth services including website design, SEO, paid advertising, and growth automation. Contact us at <a href="mailto:surgsolutionslimited@gmail.com" style={{ color: 'var(--primary)' }}>surgsolutionslimited@gmail.com</a>.</p>
         </section>
 
         <section style={{ marginBottom: '2.5rem' }}>

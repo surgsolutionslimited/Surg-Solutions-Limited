@@ -14,7 +14,7 @@ export default function Terms() {
 
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>1. Acceptance of Terms</h2>
-          <p>By accessing or using surgsolutions.com you agree to be bound by these Terms of Service. If you do not agree, please do not use our site.</p>
+          <p>By accessing or using surgsolutions.online you agree to be bound by these Terms of Service. If you do not agree, please do not use our site.</p>
         </section>
 
         <section style={{ marginBottom: '2.5rem' }}>

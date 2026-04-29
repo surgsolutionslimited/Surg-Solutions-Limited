@@ -20,14 +20,14 @@ export default function CaseStudyDetail() {
     "author": {
       "@type": "Organization",
       "name": "Surg Solutions",
-      "url": "https://surgsolutions.com"
+      "url": "https://surgsolutions.online"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Surg Solutions",
-      "url": "https://surgsolutions.com"
+      "url": "https://surgsolutions.online"
     },
-    "url": `https://surgsolutions.com/case-studies/${cs.id}`,
+    "url": `https://surgsolutions.online/case-studies/${cs.id}`,
     "about": {
       "@type": "Service",
       "name": cs.tags.join(', '),

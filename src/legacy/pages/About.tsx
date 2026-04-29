@@ -38,16 +38,16 @@ const aboutSchema = [
     "worksFor": {
       "@type": "Organization",
       "name": "Surg Solutions",
-      "url": "https://surgsolutions.com"
+      "url": "https://surgsolutions.online"
     },
-    "url": "https://surgsolutions.com/about",
+    "url": "https://surgsolutions.online/about",
     "description": "Digital growth strategist helping service businesses build systems that attract and convert clients — website design, SEO, paid ads, and automation."
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Surg Solutions",
-    "url": "https://surgsolutions.com",
+    "url": "https://surgsolutions.online",
     "founder": {
       "@type": "Person",
       "name": "Chuks"

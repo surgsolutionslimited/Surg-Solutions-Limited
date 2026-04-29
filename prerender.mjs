@@ -100,7 +100,7 @@ async function build() {
       const priority = url === '/' ? '1.0' : url === '/audit' ? '0.7' : (url === '/privacy-policy' || url === '/terms') ? '0.3' : '0.8'
       sitemapEntries.push(`
   <url>
-    <loc>https://surgsolutions.com${url}</loc>
+    <loc>https://surgsolutions.online${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${url === '/' ? 'weekly' : (url === '/privacy-policy' || url === '/terms') ? 'yearly' : 'monthly'}</changefreq>
     <priority>${priority}</priority>
