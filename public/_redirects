@@ -1,0 +1,11 @@
+/about /about/index.html 200
+/services /services/index.html 200
+/case-studies /case-studies/index.html 200
+/case-studies/:slug /case-studies/:slug/index.html 200
+/free-audit /free-audit/index.html 200
+/privacy-policy /privacy-policy/index.html 200
+/terms /terms/index.html 200
+/audit /audit/index.html 200
+/audit/apply /audit/apply/index.html 200
+/audit/book /audit/book/index.html 200
+/audit/thank-you /audit/thank-you/index.html 200
