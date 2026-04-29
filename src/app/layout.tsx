@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     default: 'Surg Solutions | SEO, AIO & Digital Growth Systems',
   },
   description: 'ROI-driven search visibility. We deploy data-driven SEO, AIO, and Google Ads strategies to scale service businesses. Dominate your market share.',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
