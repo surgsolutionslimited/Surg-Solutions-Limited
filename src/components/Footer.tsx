@@ -18,10 +18,10 @@ export default function Footer() {
             <div className="footer-links">
               <h3>Services</h3>
               <ul>
-                <li><Link href="/services">Website Design</Link></li>
-                <li><Link href="/services">SEO &amp; AIO</Link></li>
-                <li><Link href="/services">Google &amp; Meta Ads</Link></li>
-                <li><Link href="/services">Growth Automation</Link></li>
+                <li><Link href="/services/#website-design">Website Design</Link></li>
+                <li><Link href="/services/#seo-aeo">SEO &amp; AIO</Link></li>
+                <li><Link href="/services/#ads">Google &amp; Meta Ads</Link></li>
+                <li><Link href="/services/#automation">Growth Automation</Link></li>
               </ul>
             </div>
           </nav>
