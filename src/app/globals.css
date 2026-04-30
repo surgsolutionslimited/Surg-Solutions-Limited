@@ -457,6 +457,13 @@ main {
   justify-content: center;
 }
 
+.hero-trust-strip {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0 !important;
+}
+
 @media (max-width: 768px) {
   .hero { min-height: 70vh; }
   .hero-content h1 { font-size: 3rem; }
@@ -548,29 +555,22 @@ main {
   margin-bottom: 2rem;
 }
 
-.problem-quote {
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.55;
+.problem-headline {
+  font-size: 2.25rem;
   color: var(--secondary);
-  font-style: italic;
-  border-left: 4px solid var(--primary);
-  padding: 1.5rem 2rem;
-  background: var(--bg-main);
-  border-radius: 0 12px 12px 0;
-  text-align: left;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
+  line-height: 1.2;
 }
 
 .problem-body {
   font-size: 1.125rem;
   color: var(--text-secondary);
   line-height: 1.7;
+  margin-bottom: 1.25rem;
 }
 
 @media (max-width: 768px) {
-  .problem-quote { font-size: 1.2rem; padding: 1.25rem; }
+  .problem-headline { font-size: 1.75rem; }
 }
 
 /* ── Service Pillars ───────────────────────── */
@@ -867,7 +867,23 @@ main {
   margin-bottom: 2.5rem;
 }
 
-.bottom-cta-actions { display: flex; justify-content: center; }
+.bottom-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
 
 @media (max-width: 768px) {
   .bottom-cta-content h2 { font-size: 2.25rem; }
@@ -2206,4 +2222,215 @@ main {
   font-weight: 500;
   line-height: 1.6;
   margin-top: 1rem;
+}
+
+/* ── Why Now ───────────────────────────────── */
+.why-now {
+  background: #f0fdfb;
+  padding: 5rem 0;
+  border-top: 1px solid rgba(18, 203, 208, 0.15);
+  border-bottom: 1px solid rgba(18, 203, 208, 0.15);
+}
+
+.why-now-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.why-now-inner h2 {
+  font-size: 2.25rem;
+  color: var(--secondary);
+  margin-bottom: 2rem;
+  line-height: 1.25;
+}
+
+.why-now-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.why-now-body p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.why-now-engines {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.why-now-engine {
+  display: inline-block;
+  padding: 0.4rem 1.1rem;
+  border-radius: 100px;
+  border: 1.5px solid;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.why-now-caption {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .why-now-inner h2 { font-size: 1.75rem; }
+}
+
+/* ── Promise Band ──────────────────────────── */
+.promise-band {
+  background: var(--secondary);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.promise-band-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  max-width: 860px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+.promise-band-text em {
+  color: var(--primary);
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .promise-band-text { font-size: 1.25rem; }
+}
+
+/* ── Risk Reversal ─────────────────────────── */
+.risk-reversal .section-header { margin-bottom: 3rem; }
+
+.risk-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.risk-card {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.risk-card-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+}
+
+.risk-card-title {
+  font-size: 1.125rem;
+  color: var(--secondary);
+  margin-bottom: 0.875rem;
+}
+
+.risk-card-body {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .risk-cards {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Bonus Stack ───────────────────────────── */
+.bonus-stack .section-header { margin-bottom: 3rem; }
+
+.bonus-table {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.bonus-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  gap: 1rem;
+}
+
+.bonus-row:last-child { border-bottom: none; }
+
+.bonus-row-header {
+  background: var(--bg-off);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.bonus-item {
+  font-size: 0.975rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.bonus-check {
+  color: var(--primary);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.bonus-value {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.bonus-value-core {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.bonus-total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.price-anchor {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .bonus-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .bonus-value { font-size: 0.8rem; }
 }

@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
+import WhyNow from '@/components/WhyNow'
 import TrustBar from '@/components/TrustBar'
 import ProblemSection from '@/components/ProblemSection'
+import PromiseBand from '@/components/PromiseBand'
 import ServicePillars from '@/components/ServicePillars'
 import Methodology from '@/components/Methodology'
 import CaseStudyPreview from '@/components/CaseStudyPreview'
+import RiskReversal from '@/components/RiskReversal'
+import BonusStack from '@/components/BonusStack'
 
 export const metadata: Metadata = {
-  title: 'SEO, AIO & Digital Growth Systems',
-  description: 'ROI-driven search visibility. We deploy data-driven SEO, AIO, and Google Ads strategies to scale service businesses. Dominate your market share.',
+  title: 'Growth Systems for Local Businesses | AI Search + SEO + Ads | Surg Solutions',
+  description: 'Be found on Google AND in ChatGPT, Claude, Perplexity, and Gemini. We build complete growth systems for local service businesses — with a 90-day lead guarantee.',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: 'https://surgsolutions.online/',
-    title: 'Surg Solutions | SEO, AIO & Digital Growth Systems',
-    description: 'ROI-driven search visibility. We deploy data-driven SEO, AIO, and Google Ads strategies to scale service businesses.',
+    title: 'Growth Systems for Local Businesses | AI Search + SEO + Ads | Surg Solutions',
+    description: 'Be found on Google AND in ChatGPT, Claude, Perplexity, and Gemini. We build complete growth systems for local service businesses — with a 90-day lead guarantee.',
     images: [{ url: '/logo-dark.png' }],
   },
 }
@@ -35,7 +39,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Surg Solutions | SEO, AIO & Digital Growth Systems',
+    name: 'Growth Systems for Local Businesses | AI Search + SEO + Ads | Surg Solutions',
     url: 'https://surgsolutions.online',
   },
 ]
@@ -48,11 +52,15 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <Hero />
+      <WhyNow />
       <TrustBar />
       <ProblemSection />
+      <PromiseBand />
       <ServicePillars />
       <Methodology />
       <CaseStudyPreview />
+      <RiskReversal />
+      <BonusStack />
     </>
   )
 }

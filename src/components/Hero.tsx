@@ -7,22 +7,23 @@ export default function Hero() {
       <div className="hero-background-pattern" aria-hidden="true" />
       <div className="container hero-container">
         <div className="hero-content text-center animate-fade-in">
-          <p className="hero-badge">Growth Systems &amp; Automation</p>
+          <p className="hero-badge">Growth Systems for Local Service Businesses</p>
           <h1>
-            Stop Chasing Clients.<br />
-            <span className="text-gradient">Build the System That Brings Them to You.</span>
+            Your customers now ask AI for recommendations.<br />
+            <span className="text-gradient">Make sure they hear about you — not your competitor.</span>
           </h1>
           <p>
-            We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably, without the manual hustle.
+            We build complete growth systems — websites, AI-era search, paid ads, and automation — that get local service businesses found on Google AND inside ChatGPT, Claude, Perplexity, and Gemini. So qualified leads come to you, predictably, every month.
           </p>
           <div className="hero-actions">
             <Link href="/audit" className="btn btn-primary">
-              Get Free Growth Audit <ArrowRight size={18} aria-hidden="true" />
+              Get My Free AI Visibility Audit <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <Link href="/case-studies" className="btn btn-outline">
-              See Our Work <ArrowRight size={18} aria-hidden="true" />
+              See Real Client Results <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
+          <p className="hero-trust-strip">Live in 30 days &middot; Lead guarantee included &middot; You own everything we build</p>
         </div>
       </div>
     </section>
