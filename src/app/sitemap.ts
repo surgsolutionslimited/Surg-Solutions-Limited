@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy-policy',
     '/terms',
     '/audit',
-    '/audit/apply',
-    '/audit/book',
   ]
 
   // Map static routes to sitemap entries
