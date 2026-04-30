@@ -1,9 +1,4 @@
-const engines = [
-  { name: 'ChatGPT', color: '#10a37f' },
-  { name: 'Claude', color: '#d4774a' },
-  { name: 'Perplexity', color: '#6366f1' },
-  { name: 'Gemini', color: '#4285F4' },
-]
+const engines = ['ChatGPT', 'Claude', 'Perplexity', 'Gemini']
 
 export default function WhyNow() {
   return (
@@ -17,10 +12,8 @@ export default function WhyNow() {
             <p>Most agencies still optimise for old search. We optimise for AEO — so your business shows up first.</p>
           </div>
           <div className="why-now-engines" aria-label="AI search engines we optimise for">
-            {engines.map((e) => (
-              <span key={e.name} className="why-now-engine" style={{ borderColor: e.color, color: e.color }}>
-                {e.name}
-              </span>
+            {engines.map((name) => (
+              <span key={name} className="why-now-engine">{name}</span>
             ))}
           </div>
           <p className="why-now-caption">Be visible everywhere your customers ask.</p>
