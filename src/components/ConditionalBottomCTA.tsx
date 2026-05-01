@@ -4,6 +4,6 @@ import BottomCTA from './BottomCTA'
 
 export default function ConditionalBottomCTA() {
   const pathname = usePathname()
-  if (pathname === '/services') return null
+  if (pathname === '/services' || pathname === '/services/') return null
   return <BottomCTA />
 }
