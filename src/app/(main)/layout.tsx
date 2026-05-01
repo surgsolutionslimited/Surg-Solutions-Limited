@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import BottomCTA from '@/components/BottomCTA'
+import ConditionalBottomCTA from '@/components/ConditionalBottomCTA'
 import FloatingCTA from '@/components/FloatingCTA'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
@@ -8,7 +8,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <div className="app-container">
       <Navbar />
       <main>{children}</main>
-      <BottomCTA />
+      <ConditionalBottomCTA />
       <Footer />
       <FloatingCTA />
     </div>
