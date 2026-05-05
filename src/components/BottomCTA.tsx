@@ -1,7 +1,11 @@
+'use client'
 import Link from 'next/link'
 import { MessageCircle, ArrowRight } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export default function BottomCTA() {
+  const pathname = usePathname()
+  if (pathname === '/services' || pathname === '/services/') return null
   return (
     <section className="bottom-cta section-dark">
       <div className="container bottom-cta-container">
