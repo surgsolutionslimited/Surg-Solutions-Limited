@@ -11,11 +11,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10rem;
+  height: 14rem;
 }
 
 .navbar-logo img {
-  height: 220px;
+  height: 200px;
   width: auto;
   display: block;
 }
@@ -74,7 +74,7 @@
 @media (max-width: 991px) {
   .navbar-links {
     position: absolute;
-    top: 10rem;
+    top: 14rem;
     left: 0;
     width: 100%;
     background-color: var(--bg-main);
