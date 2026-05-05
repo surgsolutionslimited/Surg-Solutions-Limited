@@ -14,7 +14,7 @@ export default function Navbar() {
     <header className="navbar navbar-light">
       <div className="container navbar-container">
         <Link href="/" className="navbar-logo">
-          <Image src="/logo-dark.png" alt="Surg Solutions" width={417} height={224} priority />
+          <Image src="/Logo Light Background.png" alt="Surg Solutions" width={417} height={224} priority />
         </Link>
 
         <nav className={`navbar-links ${isOpen ? 'open' : ''}`} aria-label="Main navigation">

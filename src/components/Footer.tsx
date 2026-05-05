@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/">
-              <Image src="/logo-light.png" alt="Surg Solutions" width={456} height={257} className="footer-logo" />
+              <Image src="/Logo Dark Background.png" alt="Surg Solutions" width={456} height={257} className="footer-logo" />
             </Link>
             <p>We design and build complete digital growth systems — websites, SEO, ads, and automation — so your business attracts and converts clients predictably.</p>
           </div>
