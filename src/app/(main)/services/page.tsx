@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Globe, Search, TrendingUp, Zap, CheckCircle2, Shield, Unlock, Calendar, ArrowRight, MessageCircle } from 'lucide-react'
+import { Globe, Search, TrendingUp, Zap, CheckCircle2, Shield, Unlock, Calendar, ArrowRight } from 'lucide-react'
 import ServicesFAQ from '@/components/ServicesFAQ'
 
 export const metadata: Metadata = {
@@ -326,24 +326,6 @@ export default function ServicesPage() {
 
       {/* ── FAQ ── */}
       <ServicesFAQ />
-
-      {/* ── Final CTA ── */}
-      <section className="svc-final-cta section-dark">
-        <div className="container bottom-cta-container">
-          <div className="bottom-cta-content text-center animate-fade-in">
-            <h2>Not sure which tier fits? Let&apos;s figure it out together.</h2>
-            <p>Book a free 30-minute audit call. We&apos;ll review your current visibility across Google and the major AI engines, look at where leads are leaking, and recommend the tier that matches your goals and budget. No pitch. No pressure.</p>
-            <div className="bottom-cta-actions">
-              <Link href="/audit" className="btn btn-primary">
-                Book My Free Audit <ArrowRight size={20} aria-hidden="true" />
-              </Link>
-              <a href="https://wa.link/a2gatg" target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                <MessageCircle size={20} aria-hidden="true" /> Message on WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </div>
   )
