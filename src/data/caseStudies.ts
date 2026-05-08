@@ -12,6 +12,8 @@ export interface CaseStudy {
   accentColor: string;
   tags: string[];
   stats: { num: string; label: string }[];
+  image?: string;
+  siteUrl?: string;
   // Simple format (existing)
   problem?: string;
   whatWeDid?: string;
@@ -215,6 +217,73 @@ export const caseStudies: CaseStudy[] = [
     ],
     strategicTakeaway:
       'Modern growth is no longer just about running ads. It\'s about building systems that align with human intent, feed machine learning models, and position your brand for AI-driven discovery. This is the foundation of Answer Engine Optimization (AIO).',
+  },
+  {
+    id: 'synergy-growth-marketing',
+    industry: 'Digital marketing · Performance agency',
+    title: 'Conversion-first Next.js site for a performance marketing agency',
+    stat: 'Custom Build',
+    statLabel: 'Next.js website',
+    accentColor: '#84CC16',
+    tags: ['Website Development', 'Next.js'],
+    image: '/case-studies/synergy-homepage.png',
+    stats: [
+      { num: 'Next.js',  label: 'Tech stack' },
+      { num: 'Custom',   label: 'Design & build' },
+      { num: '4',        label: 'Services showcased' },
+    ],
+    overview:
+      'Synergy Growth Marketing is a performance agency offering SEO, paid advertising, AI Optimization (AIO), and website development. We designed and built their site around a single goal — turning the right visitors into audit bookings.',
+    challenge: [
+      'Prove credibility — prospects judge an agency by the quality of its own marketing before they ever hop on a call',
+      'Communicate a differentiated offer, especially around AI Optimization positioning, without burying it in jargon',
+      'Convert visitors into booked audits, not just collect traffic',
+    ],
+    strategicApproach: [
+      {
+        title: 'Conversion-led information architecture',
+        bullets: [
+          'Every page funnels toward one clear CTA: Get Your Free Visibility Audit',
+          'Homepage opens with a sharp value proposition and a four-step "How it works" section',
+          'Surfaces the four core services and reinforces credibility with a real case study before the final ask',
+        ],
+      },
+      {
+        title: 'Service clarity without the agency fluff',
+        bullets: [
+          'Each offer — SEO, Paid Advertising, AIO, and Website Development — gets its own dedicated explanation',
+          'Written to match how prospects actually think about their problems, not how agencies usually pitch them',
+        ],
+      },
+      {
+        title: 'Premium, modern design language',
+        bullets: [
+          'Clean typography, intentional spacing, and motion that supports the content instead of distracting from it',
+          'The look reflects the price point Synergy commands and the standard of work they deliver to clients',
+        ],
+      },
+      {
+        title: 'Built for speed and scale',
+        bullets: [
+          'Next.js foundation means fast page loads and strong technical SEO out of the box',
+          'A codebase Synergy can extend as they add services, locations, and case studies over time',
+        ],
+      },
+      {
+        title: 'Frictionless lead capture',
+        bullets: [
+          'The audit funnel is one click away from anywhere on the site',
+          'A focused booking flow that strips out everything that isn\'t helping the visitor convert',
+        ],
+      },
+    ],
+    businessImpact: [
+      'A credible front door that matches the calibre of work they sell',
+      'A clear funnel that channels every visitor toward a single high-intent action',
+      'A scalable foundation built to grow with new services and markets',
+    ],
+    strategicTakeaway:
+      "It's the kind of site we build for every website development client: not a brochure, but a system.",
   },
   {
     id: 'plumbers-auckland',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, MessageCircle, CheckCircle2 } from 'lucide-react'
@@ -71,6 +72,32 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                   <div className="cs-detail-section">
                     <h2>Overview</h2>
                     <p>{cs.overview}</p>
+                  </div>
+                )}
+                {cs.image && (
+                  <div className="cs-detail-section">
+                    <h2>The Website</h2>
+                    <div className="cs-site-preview">
+                      <div className="cs-site-preview-chrome">
+                        <span className="cs-site-preview-dot" style={{ background: '#FF5F57' }} />
+                        <span className="cs-site-preview-dot" style={{ background: '#FFBD2E' }} />
+                        <span className="cs-site-preview-dot" style={{ background: '#28CA41' }} />
+                      </div>
+                      <div className="cs-site-preview-viewport">
+                        <Image
+                          src={cs.image}
+                          alt={`${cs.title} — homepage screenshot`}
+                          fill
+                          sizes="720px"
+                          style={{ objectFit: 'cover', objectPosition: 'top' }}
+                        />
+                      </div>
+                    </div>
+                    {cs.siteUrl && (
+                      <a href={cs.siteUrl} target="_blank" rel="noopener noreferrer" className="cs-site-preview-link">
+                        Visit the live site →
+                      </a>
+                    )}
                   </div>
                 )}
                 {cs.challenge && cs.challenge.length > 0 && (

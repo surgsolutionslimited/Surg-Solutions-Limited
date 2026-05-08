@@ -1751,6 +1751,46 @@ main {
   padding: 1.25rem 1.5rem;
 }
 
+.cs-site-preview {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.cs-site-preview-chrome {
+  background: #e2e8f0;
+  padding: 0.5rem 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.cs-site-preview-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.cs-site-preview-viewport {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+
+.cs-site-preview-link {
+  display: inline-block;
+  margin-top: 0.875rem;
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cs-site-preview-link:hover { text-decoration: underline; }
+
 @media (max-width: 640px) {
   .cs-detail-stats { gap: 1rem; }
   .cs-detail-stat { padding: 1rem 1.25rem; min-width: 100px; }
