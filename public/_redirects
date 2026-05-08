@@ -2,7 +2,7 @@
 /services /services/index.html 200
 /case-studies /case-studies/index.html 200
 /case-studies/:slug /case-studies/:slug/index.html 200
-/free-audit /free-audit/index.html 200
+/free-audit /audit/ 301
 /privacy-policy /privacy-policy/index.html 200
 /terms /terms/index.html 200
 /audit /audit/index.html 200

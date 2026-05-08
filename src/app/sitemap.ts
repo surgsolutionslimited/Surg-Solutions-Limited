@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/services',
     '/case-studies',
-    '/free-audit',
     '/privacy-policy',
     '/terms',
     '/audit',

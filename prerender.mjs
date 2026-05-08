@@ -36,7 +36,6 @@ const baseRoutes = [
   '/',
   '/services',
   '/case-studies',
-  '/free-audit',
   '/about',
   '/audit',
   '/privacy-policy',
