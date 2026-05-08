@@ -37,6 +37,7 @@ export default function AuditThankYouPage() {
     const invalid = new Set<string>()
     if (!form.fullName.trim()) invalid.add('fullName')
     if (!form.email.trim()) invalid.add('email')
+    if (!form.whatsapp.trim()) invalid.add('whatsapp')
     if (invalid.size > 0) { setErrors(invalid); return }
 
     setIsSubmitting(true)
@@ -44,13 +45,13 @@ export default function AuditThankYouPage() {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_NOTIFY_TEMPLATE,
-        { from_name: form.fullName, from_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        { from_name: form.fullName, from_email: form.email, whatsapp: form.whatsapp },
         EMAILJS_PUBLIC_KEY
       )
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_GUIDE_TEMPLATE,
-        { to_name: form.fullName, to_email: form.email, whatsapp: form.whatsapp || 'Not provided' },
+        { to_name: form.fullName, to_email: form.email, whatsapp: form.whatsapp },
         EMAILJS_PUBLIC_KEY
       )
       if (window.fbq) {
@@ -94,10 +95,9 @@ export default function AuditThankYouPage() {
               {errors.has('email') && <span className="field-error-msg">This field is required</span>}
             </div>
             <div className="audit-form-group">
-              <label htmlFor="whatsapp">
-                WhatsApp number <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.8rem' }}>(optional)</span>
-              </label>
-              <input id="whatsapp" name="whatsapp" type="tel" placeholder="+234..." value={form.whatsapp} onChange={handleChange} />
+              <label htmlFor="whatsapp">WhatsApp number</label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="+234..." value={form.whatsapp} onChange={handleChange} className={errors.has('whatsapp') ? 'field-error' : ''} />
+              {errors.has('whatsapp') && <span className="field-error-msg">This field is required</span>}
             </div>
             <button type="submit" className="btn btn-primary audit-submit-btn" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send Me the Guide'}
