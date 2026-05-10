@@ -3,6 +3,9 @@ import Link from 'next/link'
 
 export default function AuditLayout({ children }: { children: React.ReactNode }) {
   return (
+    <>
+      <link rel="preconnect" href="https://calendly.com" />
+      <link rel="preconnect" href="https://assets.calendly.com" />
     <div className="funnel-layout">
       <header className="funnel-header">
         <Link href="/">
@@ -13,5 +16,6 @@ export default function AuditLayout({ children }: { children: React.ReactNode })
         {children}
       </main>
     </div>
+    </>
   )
 }

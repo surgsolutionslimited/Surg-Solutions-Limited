@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Script from 'next/script'
 
 declare global {
   interface Window { fbq?: (...args: unknown[]) => void }
@@ -53,14 +52,15 @@ export default function AuditBookPage() {
           Pick a time that works for you. This is a 30-minute call where we&apos;ll look at your current setup, identify exactly where growth is leaking, and show you what a complete system would look like for your business.
         </p>
         <div className="calendly-wrapper">
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/surgsolutionslimited/30min"
-            style={{ minWidth: '320px', height: '700px' }}
+          <iframe
+            src="https://calendly.com/surgsolutionslimited/30min?embed_domain=surgsolutions.online&embed_type=Inline&hide_gdpr_banner=1"
+            width="100%"
+            height="700"
+            frameBorder={0}
+            title="Book a strategy call"
           />
         </div>
       </div>
-      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
     </div>
   )
 }
