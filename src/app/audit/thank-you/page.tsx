@@ -55,9 +55,27 @@ export default function AuditThankYouPage() {
         EMAILJS_PUBLIC_KEY
       )
       if (window.fbq) {
-        window.fbq('track', 'AddPaymentInfo', { content_name: 'Nurture Lead - Guide Request Submitted' })
-        window.fbq('trackCustom', 'NurtureLead', { lead_source: 'guide_request', email: form.email })
+        const [fn, ...rest] = form.fullName.trim().toLowerCase().split(' ')
+        window.fbq('init', '869444886182609', {
+          em: form.email.trim().toLowerCase(),
+          ph: form.whatsapp.replace(/\D/g, ''),
+          fn,
+          ln: rest.join(' ') || undefined,
+        })
+        window.fbq('track', 'Lead', { content_name: 'Unqualified Lead - Guide Request Submitted' })
+        window.fbq('trackCustom', 'NurtureLead', { lead_source: 'guide_request' })
       }
+      fetch('/api/fb-event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventName: 'Lead',
+          email: form.email,
+          phone: form.whatsapp,
+          eventSourceUrl: window.location.href,
+          customData: { content_name: 'Unqualified Lead - Guide Request' },
+        }),
+      }).catch(() => {})
       setSubmitted(true)
     } catch {
       setIsSubmitting(false)

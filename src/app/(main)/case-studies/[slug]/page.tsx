@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, MessageCircle, CheckCircle2 } from 'lucide-react'
@@ -84,13 +83,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                         <span className="cs-site-preview-dot" style={{ background: '#28CA41' }} />
                       </div>
                       <div className="cs-site-preview-viewport">
-                        <Image
-                          src={cs.image}
-                          alt={`${cs.title} — homepage screenshot`}
-                          fill
-                          sizes="720px"
-                          style={{ objectFit: 'cover', objectPosition: 'top' }}
-                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={cs.image} alt={`${cs.title} — homepage screenshot`} className="cs-site-preview-img" />
                       </div>
                     </div>
                     {cs.siteUrl && (

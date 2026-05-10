@@ -73,9 +73,27 @@ export default function AuditApplyPage() {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE, leadData, EMAILJS_PUBLIC_KEY)
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_REPLY_TEMPLATE, { to_name: form.fullName, to_email: form.email }, EMAILJS_PUBLIC_KEY)
       if (window.fbq) {
-        window.fbq('track', 'AddPaymentInfo', { content_name: 'Qualified Lead - Application Submitted' })
+        const [fn, ...rest] = form.fullName.trim().toLowerCase().split(' ')
+        window.fbq('init', '869444886182609', {
+          em: form.email.trim().toLowerCase(),
+          ph: form.whatsapp.replace(/\D/g, ''),
+          fn,
+          ln: rest.join(' ') || undefined,
+        })
+        window.fbq('track', 'Lead', { content_name: 'Qualified Lead - Application Submitted' })
         window.fbq('trackCustom', 'FormSubmit', { business_category: form.services, ad_spend_range: form.adSpend })
       }
+      fetch('/api/fb-event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventName: 'Lead',
+          email: form.email,
+          phone: form.whatsapp,
+          eventSourceUrl: window.location.href,
+          customData: { content_name: 'Audit Application', ad_spend_range: form.adSpend },
+        }),
+      }).catch(() => {})
       sessionStorage.setItem('auditFormComplete', 'true')
       router.push('/audit/book')
     } catch {

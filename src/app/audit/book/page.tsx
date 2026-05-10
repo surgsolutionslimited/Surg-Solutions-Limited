@@ -24,9 +24,19 @@ export default function AuditBookPage() {
     function handleMessage(e: MessageEvent) {
       if (e.data && e.data.event === 'calendly.event_scheduled') {
         if (window.fbq) {
-          window.fbq('track', 'Purchase', { content_name: 'Strategy Call Booked' })
+          window.fbq('track', 'Schedule', { content_name: 'Strategy Call Booked' })
+          window.fbq('track', 'Lead', { content_name: 'Strategy Call Booked' })
           window.fbq('trackCustom', 'CallBooked', { conversion_type: 'strategy_call' })
         }
+        fetch('/api/fb-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventName: 'Schedule',
+            eventSourceUrl: window.location.href,
+            customData: { content_name: 'Strategy Call Booked' },
+          }),
+        }).catch(() => {})
       }
     }
     window.addEventListener('message', handleMessage)

@@ -23,7 +23,6 @@ export default function AuditLandingPage() {
 
   function handleYes() {
     if (window.fbq) {
-      window.fbq('track', 'InitiateCheckout', { content_name: 'Audit Qualification - Qualified Lead' })
       window.fbq('trackCustom', 'QualifiedLead', { ad_spend_range: 'inquired' })
     }
     sessionStorage.setItem('auditQualified', 'true')
