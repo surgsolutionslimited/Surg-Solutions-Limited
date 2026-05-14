@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
     shortcut: '/favicon.svg',
   },
+  other: {
+    'facebook-domain-verification': '7pyb324easjjm1ryx31om2dy3g7emx',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
